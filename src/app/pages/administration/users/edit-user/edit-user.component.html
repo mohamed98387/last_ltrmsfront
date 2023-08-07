@@ -1,0 +1,153 @@
+<!-- Edit USER -->
+<div>
+  {{ typeValidationForm.value | json }}
+  <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="nom"
+            [ngClass]="{ 'is-invalid': typesubmit && type.nom.errors }"
+            placeholder="Nom"
+            name="Name"
+          />
+          <div *ngIf="typesubmit && type.nom.errors" class="invalid-feedback">
+            <span *ngIf="type.nom.errors.required">Champs Obligateur </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Login</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="login"
+            [ngClass]="{ 'is-invalid': typesubmit && type.login.errors }"
+            placeholder="Login"
+            
+          />
+          <div *ngIf="typesubmit && type.login.errors" class="invalid-feedback">
+            <span *ngIf="type.login.errors.required">Champs Obligateur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+   
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': typesubmit && type.email.errors }"
+            placeholder="Email"
+          />
+
+          <div *ngIf="typesubmit && type.email.errors" class="invalid-feedback">
+            <span *ngIf="type.email.errors.required">Champs Obligateur</span>
+            <span *ngIf="type.email.errors.invalidEmail">invalid email</span>
+          </div>
+        </div>
+     
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="phone"
+            [ngClass]="{ 'is-invalid': typesubmit && type.phone.errors }"
+            placeholder="Phone"
+          />
+          <div *ngIf="typesubmit && type.phone.errors" class="invalid-feedback">
+            <span *ngIf="type.phone.errors.required">Champs Obligateur</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">City</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="city"
+            [ngClass]="{ 'is-invalid': typesubmit && type.city.errors }"
+            placeholder="City"
+          />
+
+          <div *ngIf="typesubmit && type.city.errors" class="invalid-feedback">
+            <span *ngIf="type.city.errors.required">Champs Obligateur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Organisation</label>
+          <select formControlName="organisation" class="form-select">
+            <option value="Leoni Sousse">Leoni Sousse</option>
+            <option value="Leoni Monastir">Leoni Monastir</option>
+            <option value="Leoni Mateur Nord">Leoni Mateur Nord</option>
+            <option value="Mateur Sud">Mateur Sud</option>
+            <option value="Leoni Sidi Bou Ali">Leoni Sidi Bou Ali</option>
+          </select>
+          <div
+            *ngIf="
+              type.organisation.errors &&
+              (type.organisation.dirty || type.organisation.touched)
+            "
+            class="invalid-feedback"
+          >
+            <div *ngIf="type.organisation.errors.required">
+              Champs Obligateur
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Rôle</label>
+          <select class="form-select" formControlName="role">
+            <option selected value="ADMIN">ADMIN</option>
+            <option value="CHEF_SEGMENT">CHEF_SEGMENT</option>
+            <option value="RESPONSABLE_TRANSPORT">RESPONSABLE_TRANSPORT</option>
+            <option value="RH_SEGMENT">RH_SEGMENT</option>
+          </select>
+          <div
+            *ngIf="type.role.errors && (type.role.dirty || type.role.touched)"
+            class="invalid-feedback"
+          >
+            <div *ngIf="type.role.errors.required">Champs Obligateur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="d-flex flex-wrap gap-2 btn-edit">
+      <button (click)="updateUser()" type="submit" class="btn btn-primary waves-effect waves-light">
+        Modifier
+      </button>
+      <button
+        (click)="getdata()"
+        type="reset"
+        class="btn btn-secondary waves-effect"
+      >
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

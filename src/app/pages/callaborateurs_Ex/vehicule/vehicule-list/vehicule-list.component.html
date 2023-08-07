@@ -1,0 +1,241 @@
+<div class="container-fluid">
+  <app-page-title
+    title="Gestion Véhicules"
+    [breadcrumbItems]="breadCrumbItems"
+  ></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Listes des véhicules</h4>
+          <div class="row mb-md-2 btn-resp">
+            <!-- Add new -->
+            <div>
+              <div
+                id="tickets-table_filter"
+                class="dataTables_filter text-md-end"
+              >
+                <div class="btn-group" placement="bottom-left" ngbDropdown>
+                  <button
+                    type="button"
+                    class="btn btn-outline-info dropdown-toggle"
+                    ngbDropdownToggle
+                  >
+                    <i class="mdi mdi-cloud-upload"></i>
+                  </button>
+                  <div class="dropdown-menu" ngbDropdownMenu>
+                    <a class="dropdown-item" href="javascript: void(0);"
+                      >Télécharger template</a
+                    >
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript: void(0);"
+                      >Importer liste</a
+                    >
+                  </div>
+                </div>
+                <!-- /Dropdown -->
+                <button
+                  type="button"
+                  class="btn btn-info btn-add"
+                  (click)="openModal(content)"
+                >
+                  Ajouter
+                </button>
+              </div>
+            </div>
+            <!-- End add new -->
+          </div>
+          <div class="row mb-md-2">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="tickets-table_length">
+                <label
+                  class="d-inline-flex align-items-center table-length-resp"
+                  >Voir
+                  <select
+                    name="tickets-table_length"
+                    aria-controls="tickets-table"
+                    name="pageSize"
+                    [(ngModel)]="service.pageSize"
+                    class="form-control form-control-sm mx-2"
+                  >
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                  </select>
+                  Données</label
+                >
+              </div>
+            </div>
+            <!-- Search -->
+            <div class="col-sm-12 col-md-6">
+              <div
+                id="tickets-table_filter"
+                class="dataTables_filter text-md-end"
+              >
+                <label class="d-inline-flex align-items-center search-resp">
+                  <input
+                    type="text"
+                    name="searchTerm"
+                    placeholder="Recherche"
+                    class="form-control form-control-sm ms-2"
+                    aria-controls="tickets-table"
+                    [(ngModel)]="service.searchTerm"
+                /></label>
+              </div>
+            </div>
+            <!-- End search -->
+          </div>
+          <!-- Table -->
+          <div class="table-responsive">
+            <table
+              id="basic-datatable"
+              class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline"
+            >
+              <thead>
+                <tr>
+                  <th sortable="type_vehicule" (sort)="onSort($event)">
+                    Type de véhicule
+                  </th>
+                  <th sortable="Num_serie" (sort)="onSort($event)">
+                    Numéro de série
+                  </th>
+                  <th sortable="Date_mise_route" (sort)="onSort($event)">
+                    Date de mise en route
+                  </th>
+                  <th sortable="nom_reference" (sort)="onSort($event)">
+                    Nom de référence
+                  </th>
+                  <th sortable="capacite" (sort)="onSort($event)">Capacité</th>
+                  <th sortable="agence" (sort)="onSort($event)">agence</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let table of tables$ | async; let i = index">
+                <tr>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.type_vehicule"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.Num_serie"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.Date_mise_route"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.nom_reference"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.capacite"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.agence"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <div class="button-items">
+                      <button
+                        type="button"
+                        class="btn btn-outline-primary btn-rounded"
+                        (click)="openModal(contentEdit)"
+                      >
+                        <i class="mdi mdi-account-edit"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger btn-rounded"
+                        (click)="confirm()"
+                      >
+                        <i class="mdi mdi-delete"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End table -->
+          <div
+            class="row justify-content-md-between align-items-md-center mt-2"
+          >
+            <div class="col-sm-12 col-md-5">
+              <div
+                class="dataTables_info mb-2"
+                id="tickets-table_info"
+                role="status"
+                aria-live="polite"
+              >
+                Affiche {{ service.startIndex }} à {{ service.endIndex }} de
+                {{ service.totalRecords }}
+                données
+              </div>
+            </div>
+            <!-- Pagination -->
+            <div class="col-sm-12 col-md-5">
+              <div class="text-md-right float-md-end pagination-rounded">
+                <ngb-pagination
+                  [collectionSize]="total$ | async"
+                  [(page)]="service.page"
+                  [pageSize]="service.pageSize"
+                >
+                </ngb-pagination>
+              </div>
+            </div>
+            <!-- End Pagination -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- add new user modal-->
+<ng-template #content role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Ajouter Vehicule</h5>
+    <button
+      type="button"
+      class="close"
+      aria-hidden="true"
+      class="modal-btn-close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <!-- add vehicule component -->
+    <app-add-vehicule></app-add-vehicule>
+  </div>
+</ng-template>
+<!-- Edit user modal -->
+<ng-template #contentEdit role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Modifier Vehicule</h5>
+    <button
+      type="button"
+      class="close"
+      aria-hidden="true"
+      class="modal-btn-close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <!-- Edit vehicule component -->
+    <app-edit-vehicule></app-edit-vehicule>
+  </div>
+</ng-template>

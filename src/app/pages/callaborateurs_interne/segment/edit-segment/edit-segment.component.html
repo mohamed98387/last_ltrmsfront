@@ -1,0 +1,93 @@
+<!-- ADD USER -->
+<div>
+  <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
+    <div class="row">
+      <div class="mb-3">
+        <label class="form-label">Nom du segment</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Nom"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Centre de coûts du Segment</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Description"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Nom du segment SAPRef</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Emplacement du PS"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Selectionner PS</label>
+
+        <select class="form-select">
+          <option selected>Centraux</option>
+          <option>MH1</option>
+          <option>MH2</option>
+        </select>
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Selectionner RH Segment</label>
+
+        <select class="form-select">
+          <option selected>Mouez bougerra</option>
+          <option>yahia ben salem</option>
+          <option>lobna smari</option>
+        </select>
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label"> Selectionner Chef Segment</label>
+        <select class="form-select">
+          <option selected>rami ben fraj</option>
+          <option>imad habboul</option>
+          <option>mohamed frigui</option>
+        </select>
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 btn-add">
+      <button type="submit" class="btn btn-primary waves-effect waves-light">
+        Modifier
+      </button>
+      <button type="reset" class="btn btn-secondary waves-effect">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

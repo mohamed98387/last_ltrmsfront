@@ -1,0 +1,42 @@
+<!-- Edit permission -->
+<div>
+  <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
+    <div class="row">
+      <div class="mb-3">
+        <label class="form-label">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="permissionName"
+          [ngClass]="{ 'is-invalid': typesubmit && type.permissionName.errors }"
+          placeholder="Nom permission"
+        />
+        <div *ngIf="typesubmit && type.permissionName.errors" class="invalid-feedback">
+          <span *ngIf="type.permissionName.errors.required">Champs Obligateur </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="description"
+          [ngClass]="{ 'is-invalid': typesubmit && type.description.errors }"
+          placeholder="Description"
+        />
+        <div *ngIf="typesubmit && type.description.errors" class="invalid-feedback">
+          <span *ngIf="type.description.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap gap-2 btn-edit">
+      <button type="submit" class="btn btn-primary waves-effect waves-light">
+        Modifier
+      </button>
+      <button type="reset" class="btn btn-secondary waves-effect">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

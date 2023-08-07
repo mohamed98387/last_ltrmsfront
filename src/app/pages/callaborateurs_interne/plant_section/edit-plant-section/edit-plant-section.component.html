@@ -1,0 +1,93 @@
+<!-- ADD USER -->
+<div>
+  <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
+    <div class="row">
+      <div class="mb-3">
+        <label class="form-label">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Nom"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Adresse"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Emplacement du PS</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Emplacement du PS"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Choisir le PS manager</label>
+        <select class="form-select">
+          <option selected>Fethi-khlifi</option>
+          <option>Samir Bouaskar</option>
+          <option>Mnager Ps central</option>
+          <option>Kais zaaboub</option>
+        </select>
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Choisir le responsable RH</label>
+        <select class="form-select">
+          <option selected>iheb jouani</option>
+          <option>rh ps central</option>
+          <option>mohamed mabsout</option>
+          <option>mouna bouraoui</option>
+        </select>
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Choisir Organisation</label>
+        <select class="form-select">
+          <option selected>Leoni Monastir</option>
+        </select>
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 btn-add">
+      <button type="submit" class="btn btn-primary waves-effect waves-light">
+        Modifier
+      </button>
+      <button type="reset" class="btn btn-secondary waves-effect">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

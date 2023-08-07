@@ -1,0 +1,142 @@
+<h3 class="title">Planification</h3>
+<div>
+  <button
+    type="button"
+    class="btn btn-outline-primary button"
+    (click)="exportToExcel(data, 'planning_import_template')"
+  >
+    Télécharger Template
+  </button>
+
+  <br />
+  <button
+    type="button"
+    class="btn btn-outline-primary button"
+    routerLink="/NvPlanification"
+  >
+    Nouvelle planification
+  </button>
+  <br />
+  <button
+    type="button"
+    class="btn btn-outline-primary button"
+    routerLink="/actionsPlanifications"
+  >
+    Toutes les Action de planifications
+  </button>
+  <br />
+  <button
+    type="button"
+    class="btn btn-outline-primary button"
+    routerLink="/MesactionsPlanifications"
+  >
+    Mes Actions de planification
+  </button>
+  <br />
+  <button
+    routerLink="/PlanificationDeleguee"
+    type="button"
+    class="btn btn-outline-primary button"
+  >
+    Planification Deléguée
+  </button>
+</div>
+<hr />
+<div>
+  <button
+    routerLink="/PlanificationManuelle"
+    type="button"
+    class="btn btn-outline-primary"
+  >
+    Planification Manuelle
+  </button>
+  <br />
+  <button
+    type="button"
+    class="btn btn-outline-primary button"
+    routerLink="/DetailPlanification"
+  >
+    Detail Planification
+  </button>
+</div>
+<hr />
+<div>
+  <button
+    type="button"
+    class="btn btn-outline-primary"
+    routerLink="/NotificationAgence"
+  >
+    Notification Agence
+  </button>
+  <br />
+  <button
+    type="button"
+    class="btn btn-outline-primary button"
+    routerLink="/GestionPlanificationAndRecap"
+  >
+    Gestion des Planifications et Recap
+  </button>
+  <br />
+  <button
+    type="button"
+    class="btn btn-outline-primary button"
+    routerLink="/RecapModifiee"
+  >
+    Entrées Récap Modifiées.
+  </button>
+  <br />
+  <button type="button" class="btn btn-outline-primary button">
+    Planifications Adhoc
+  </button>
+  <br />
+  <button type="button" class="btn btn-outline-primary button">
+    Planning Downloads
+  </button>
+</div>
+<hr />
+<div>
+  <button type="button" class="btn btn-outline-primary">
+    Dashbord des Navettes Planifiées
+  </button>
+  <br />
+  <button type="button" class="btn btn-outline-primary button">
+    Outils d'analyse
+  </button>
+</div>
+<br />
+<div class="buttons">
+  <button type="button" class="btn btn-primary">
+    Besoins en Transport Actuels Par PS
+  </button>
+  <button type="button" class="btn btn-primary buttontwo">
+    Besoins en Transport Actuels Par Segment
+  </button>
+  <button type="button" class="btn btn-primary buttontwo">
+    Re-Charger données planification BDD
+  </button>
+  <select class="form-select select" aria-label="Default select example">
+    <option value="2">KW-2023-12</option>
+    <option value="2">KW-2023-13</option>
+    <option value="2">KW-2023-14</option>
+    <option value="2">KW-2023-15</option>
+    <option value="2">KW-2023-16</option>
+    <option value="2">KW-2023-17</option>
+    <option value="2">KW-2023-18</option>
+    <option value="2">KW-2023-19</option>
+    <option value="2">KW-2023-20</option>
+    <option selected>KW-2023-19*</option>
+    <option value="1">KW-2023-20</option>
+    <option value="2">KW-2023-21</option>
+    <option value="2">KW-2023-22</option>
+    <option value="2">KW-2023-23</option>
+    <option value="2">KW-2023-24</option>
+    <option value="2">KW-2023-25</option>
+    <option value="2">KW-2023-26</option>
+    <option value="2">KW-2023-27</option>
+    <option value="2">KW-2023-28</option>
+    <option value="2">KW-2023-29</option>
+    <option value="2">KW-2023-30</option>
+    <option value="2">KW-2023-31</option>
+  </select>
+</div>
+<p class="p">Aucun résultat</p>

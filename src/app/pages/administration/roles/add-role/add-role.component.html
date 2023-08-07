@@ -1,0 +1,78 @@
+<!-- ADD Role -->
+<div>
+  <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
+    <div class="row">
+      <div class="mb-3">
+        <label class="form-label">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="roleName"
+          [ngClass]="{ 'is-invalid': typesubmit && type.roleName.errors }"
+          placeholder="Nom rôle"
+        />
+        <div
+          *ngIf="typesubmit && type.roleName.errors"
+          class="invalid-feedback"
+        >
+          <span *ngIf="type.roleName.errors.required">Champs Obligateur </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="description"
+          [ngClass]="{ 'is-invalid': typesubmit && type.description.errors }"
+          placeholder="Description"
+        />
+        <div
+          *ngIf="typesubmit && type.description.errors"
+          class="invalid-feedback"
+        >
+          <span *ngIf="type.description.errors.required"
+            >Champs Obligateur</span
+          >
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Permissions</label>
+        <div *ngFor="let item of dataList" class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault2"
+            formControlName="permissions"
+            type="checkbox"
+            [value]="item.id"
+            [(ngModel)]="item.selected"
+            (change)="onSelectionChange()"
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            {{ item.permissionName }}
+          </label>
+        </div>
+
+        <div
+          *ngIf="typesubmit && type.permissions.errors"
+          class="invalid-feedback"
+        >
+          <span *ngIf="type.permissions.errors.required"
+            >Champs Obligateur</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap gap-2 btn-add">
+      <button type="submit" class="btn btn-primary waves-effect waves-light">
+        Ajouter
+      </button>
+      <button type="reset" class="btn btn-secondary waves-effect">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

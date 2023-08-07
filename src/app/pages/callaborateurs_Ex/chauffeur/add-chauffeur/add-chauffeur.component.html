@@ -1,0 +1,90 @@
+<!-- ADD USER -->
+<div>
+    <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Prénom</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="text"
+              [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+              placeholder="Type de véhicule"
+            />
+            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+              <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="text"
+              [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+              placeholder="Numéro de série"
+            />
+            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+              <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">   Date de Naissance</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Date de mise en route"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">     Téléphone</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="text"
+              [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+              placeholder="Type de véhicule"
+            />
+            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+              <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Choisir une agence</label>
+            <select class="form-select">
+              <option selected>STE VOYAGES TUNISIE S.V.T</option>
+              <option>STE TUNISIAN BEAUTY TRAVEL</option>
+              <option>SOCIETE YAHIA SERVICES</option>
+              <option>STE PRIMA TOURS SA</option>
+              <option>PROVINCE VOYAGES</option>
+              <option>Tunisian travel service ( TTS )</option>
+              <option>SOCIETE DE TRANSPORT DU SAHEL STS</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap gap-2 btn-add">
+        <button type="submit" class="btn btn-primary waves-effect waves-light">
+          Ajouter
+        </button>
+        <button type="reset" class="btn btn-secondary waves-effect">
+          Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+  

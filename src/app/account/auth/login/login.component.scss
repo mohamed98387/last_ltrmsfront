@@ -1,0 +1,108 @@
+.btn-primary {
+  color: #fff;
+  background-color: #003D89;
+  border-color: #003D89;
+}
+
+.text-primary {
+  color: #003D89 !important;
+}
+
+.auth-bg {
+  background: url("../../../../assets/images/bg-auth-overlay.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.auth-full-bg {
+  display: flex;
+  height: 100%;
+
+}
+
+.auth-full-page-content {
+  display: flex;
+  background-color: white;
+
+}
+
+.logo {
+  align-self: center;
+  margin-bottom: 1.5em;
+}
+
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+
+  /* CSS */
+  .col-xl-8 {
+    flex: 0 0 auto;
+    width: 66.6666666667%;
+  }
+  .col-xl-4 {
+    width: 33.333333333%;
+
+  }
+  .auth-full-page-content {
+    min-height: 100vh;
+  }
+  .auth-full-bg {
+    background-size: cover;
+    display: flex;
+
+    height: 100vh;
+  }
+}
+
+/*
+  ##Device = Tablets, Laptops, Desktops
+  ##Screen = B/w 768px to 1025px
+*/
+
+@media (min-width: 1280px)  {
+  .auth-bg {
+    background: url("../../../../assets/images/bg-auth-overlay.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 1280px) {
+  .col-xl-8 {
+    flex: 0 0 auto;
+    width: 66.6666666667%;
+  }
+  .col-xl-4 {
+    width: 33.333333333%;
+    min-height: 100vh;
+  }
+  .auth-full-bg {
+    background-size: cover;
+    display: flex;
+  }
+  .auth-bg {
+    background: url("../../../../assets/images/bg-auth-responsive.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 320px) and (max-width: 767px) {
+  /* CSS */
+  .auth-bg {
+    display: none;
+  }
+}
+
+

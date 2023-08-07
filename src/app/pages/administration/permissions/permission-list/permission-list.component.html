@@ -1,0 +1,191 @@
+<div class="container-fluid">
+  <app-page-title
+    title="Gestion Permissions"
+    [breadcrumbItems]="breadCrumbItems"
+  ></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Listes des Permissions</h4>
+          <div class="row mb-md-2 btn-resp">
+            <!-- Add new -->
+            <div>
+              <div
+                id="tickets-table_filter"
+                class="dataTables_filter text-md-end"
+              >
+                <button
+                  type="button"
+                  class="btn btn-info btn-add"
+                  (click)="openModal(contentRole)"
+                >
+                  <i class="bx bx-plus-circle font-size-16 align-middle me-2">
+                  </i
+                  >Ajouter
+                </button>
+              </div>
+            </div>
+            <!-- End add new -->
+          </div>
+          <div class="row mb-md-2">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="tickets-table_length">
+                <label
+                  class="d-inline-flex align-items-center table-length-resp"
+                  >Voir
+                  <select
+                    name="tickets-table_length"
+                    aria-controls="tickets-table"
+                    name="pageSize"
+                    [(ngModel)]="service.pageSize"
+                    class="form-control form-control-sm mx-2"
+                  >
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                  </select>
+                  Données</label
+                >
+              </div>
+            </div>
+            <!-- Search -->
+            <div class="col-sm-12 col-md-6">
+              <div
+                id="tickets-table_filter"
+                class="dataTables_filter text-md-end"
+              >
+                <label
+                  class="d-inline-flex align-items-center search-resp search"
+                >
+                  <input
+                    type="text"
+                    name="searchTerm"
+                    placeholder="Recherche"
+                    class="form-control form-control-sm ms-2"
+                    aria-controls="tickets-table"
+                    [(ngModel)]="service.searchTerm"
+                /></label>
+              </div>
+            </div>
+            <!-- End search -->
+          </div>
+          <!-- Table -->
+          <div class="table-responsive">
+            <table
+              id="basic-datatable"
+              class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline"
+            >
+              <thead>
+                <tr>
+                  <th sortable="name" (sort)="onSort($event)">Nom</th>
+                  <th sortable="description" (sort)="onSort($event)">
+                    Description
+                  </th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let table of tables$ | async; let i = index">
+                <tr>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.permissionName"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.description"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <div class="button-items">
+                      <button
+                        type="button"
+                        class="btn btn-outline-primary btn-rounded"
+                        (click)="openModal(contentEditRole); onEdit(table)"
+                      >
+                        <i class="mdi mdi-account-edit"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger btn-rounded"
+                        (click)="confirm(table.id)"
+                      >
+                        <i class="mdi mdi-delete"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End table -->
+          <div
+            class="row justify-content-md-between align-items-md-center mt-2"
+          >
+            <div class="col-sm-12 col-md-5">
+              <div
+                class="dataTables_info mb-2"
+                id="tickets-table_info"
+                role="status"
+                aria-live="polite"
+              >
+                Affiche {{ service.startIndex }} à {{ service.endIndex }} de
+                {{ service.totalRecords }}
+                données
+              </div>
+            </div>
+            <!-- Pagination -->
+            <div class="col-sm-12 col-md-5">
+              <div class="text-md-right float-md-end pagination-rounded">
+                <ngb-pagination
+                  [collectionSize]="total$ | async"
+                  [(page)]="service.page"
+                  [pageSize]="service.pageSize"
+                >
+                </ngb-pagination>
+              </div>
+            </div>
+            <!-- End Pagination -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- add new Role modal-->
+<ng-template #contentRole role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">ajouter permission</h5>
+    <button
+      type="button"
+      class="close"
+      aria-hidden="true"
+      class="modal-btn-close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-add-permission></app-add-permission>
+  </div>
+</ng-template>
+<!-- Edit Role modal -->
+<ng-template #contentEditRole role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">modifier permission</h5>
+    <button
+      type="button"
+      class="close"
+      aria-hidden="true"
+      class="modal-btn-close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+
+  <div class="modal-body" >
+    <app-edit-permission [selectedPermission]="selectedPermission"></app-edit-permission>
+  </div>
+</ng-template>

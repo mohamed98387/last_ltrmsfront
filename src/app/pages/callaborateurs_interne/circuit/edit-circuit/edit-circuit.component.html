@@ -1,0 +1,110 @@
+<!-- ADD USER -->
+<div>
+  <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
+    <div class="row">
+      <div class="mb-3">
+        <label class="form-label">Référence du chemin</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Référence du chemin"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Reference SAP LEONI</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Reference SAP LEONI"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nombre de kilomètres</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Nombre de kilomètres"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Contribution employé</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Contribution employé"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Coût par Km</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Coût par Km"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Point d'arrivée</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="text"
+          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          placeholder="Point d'arrivée"
+        />
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Selectionner une agence</label>
+
+        <select class="form-select">
+          <option selected>agence 1</option>
+          <option>agence 2</option>
+          <option>agence 3</option>
+        </select>
+        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 btn-add">
+      <button type="submit" class="btn btn-primary waves-effect waves-light">
+        Modifier
+      </button>
+      <button type="reset" class="btn btn-secondary waves-effect">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>
