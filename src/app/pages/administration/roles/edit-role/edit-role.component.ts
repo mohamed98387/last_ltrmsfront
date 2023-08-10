@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from "@angular/core";
-// importation form
+// importation form update
 import {
   FormBuilder,
   Validators,
   FormGroup,
   FormControl,
 } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { RoleService } from "src/app/services/role.service";
 @Component({
   selector: "app-edit-role",
@@ -20,7 +21,8 @@ export class EditRoleComponent implements OnInit {
   selected: any;
   constructor(
     public formBuilder: FormBuilder,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private modalService: NgbModal
   ) {}
   typesubmit: boolean;
   ngOnInit(): void {
@@ -71,6 +73,7 @@ export class EditRoleComponent implements OnInit {
         (res) => {
           console.log(res);
           alert("role updated");
+          this.modalService.dismissAll();
         },
         (error) => {
           console.error("Error in add role:", error);

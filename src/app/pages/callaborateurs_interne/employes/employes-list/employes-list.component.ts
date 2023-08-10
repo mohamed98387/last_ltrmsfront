@@ -35,9 +35,9 @@ export class EmployesListComponent implements OnInit {
   tables$: Observable<Table[]>;
   total$: Observable<number>;
   data = [
-    { name: "John", age: 30, email: "john@example.com" },
-    { name: "Jane", age: 25, email: "jane@example.com" },
-    { name: "Bob", age: 40, email: "bob@example.com" },
+    { Matricule: "10102521", Collaborateur: "Hanen Dridi", NOM: "Hanen" , PRENOM: "Dridi", COST_CENTER: 4594, SUBAREA: "LTN1", REGION: "Sbikha/3002/4023", SEGMENT: "Segment 72-1", Contremaitre: "Ommezzine Ahmed", GROUPE: "G-073-15", NATURE: "Direct"},
+    { Matricule: "10102858", Collaborateur: "Khchini Seifeddine", NOM: "Khchini", PRENOM: "Seifeddine", COST_CENTER: 4580 , SUBAREA: "LTN1", REGION: "Sbikha/3002/4023", SEGMENT: "Cutting & WPA AUDI", Contremaitre: "Brahmi Abdelwaheb", GROUPE: "G-073-15", NATURE: "Direct"},
+    { Matricule: "10103507", Collaborateur: "HAMDENI NEBIHA", NOM: "HAMDENI" , PRENOM: "NEBIHA", COST_CENTER: 4766, SUBAREA: "LTN1", REGION: "Sbikha/3002/4023", SEGMENT: "Segment 96", Contremaitre: "Boukamcha Houssem", GROUPE: "G-073-15", NATURE: "Direct"},
   ];
 
   @ViewChildren(PlantSectionListDirective)
