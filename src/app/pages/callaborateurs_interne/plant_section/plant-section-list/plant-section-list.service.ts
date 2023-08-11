@@ -43,12 +43,12 @@ function sort(tables: Table[], column: string, direction: string): Table[] {
  */
 function matches(tables: Table, term: string, pipe: PipeTransform) {
   return (
-    tables.nom.toLowerCase().includes(term.toLowerCase()) ||
-    tables.Description.toLowerCase().includes(term) ||
-    tables.Emplacement.toLowerCase().includes(term) ||
-    tables.PS_manager.toLowerCase().includes(term) ||
-    tables.responsable_RH.toLowerCase().includes(term) ||
-    tables.Organisation.toLowerCase().includes(term)
+    tables.nomPs.toLowerCase().includes(term.toLowerCase()) ||
+    tables.descriptionPS.toLowerCase().includes(term) ||
+    tables.emplacementPS.toLowerCase().includes(term) ||
+    tables.psManager.toLowerCase().includes(term) ||
+    tables.responsableRH.toLowerCase().includes(term) ||
+    tables.organisation.toLowerCase().includes(term)
   );
 }
 

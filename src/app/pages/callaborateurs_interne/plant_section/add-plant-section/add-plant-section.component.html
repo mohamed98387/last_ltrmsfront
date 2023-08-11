@@ -7,12 +7,12 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="nomPs"
+          [ngClass]="{ 'is-invalid': typesubmit && type.nomPs.errors }"
           placeholder="Nom"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+        <div *ngIf="typesubmit && type.nomPs.errors" class="invalid-feedback">
+          <span *ngIf="type.nomPs.errors.required">Champs Obligateur </span>
         </div>
       </div>
 
@@ -21,12 +21,12 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="descriptionPS"
+          [ngClass]="{ 'is-invalid': typesubmit && type.descriptionPS.errors }"
           placeholder="Description"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.descriptionPS.errors" class="invalid-feedback">
+          <span *ngIf="type.descriptionPS.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
@@ -35,50 +35,50 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="emplacementPS"
+          [ngClass]="{ 'is-invalid': typesubmit && type.emplacementPS.errors }"
           placeholder="Emplacement du PS"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.emplacementPS.errors" class="invalid-feedback">
+          <span *ngIf="type.emplacementPS.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Choisir le PS manager</label>
 
-        <select class="form-select">
+        <select formControlName="psManager" class="form-select">
           <option selected>Fethi-khlifi</option>
           <option>Samir Bouaskar</option>
           <option>Mnager Ps central</option>
           <option>Kais zaaboub</option>
         </select>
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+        <!-- <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
           <span *ngIf="type.text.errors.required">Champs Obligateur</span>
-        </div>
+        </div>-->
       </div>
 
       <div class="mb-3">
         <label class="form-label">Choisir le responsable RH</label>
-        <select class="form-select">
+        <select formControlName="responsableRH" class="form-select">
           <option selected>iheb jouani</option>
           <option>rh ps central</option>
           <option>mohamed mabsout</option>
           <option>mouna bouraoui</option>
         </select>
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+      <!--  <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
           <span *ngIf="type.text.errors.required">Champs Obligateur</span>
-        </div>
+        </div>-->
       </div>
 
       <div class="mb-3">
         <label class="form-label">Choisir Organisation</label>
-        <select class="form-select">
+        <select formControlName="organisation" class="form-select">
           <option selected>Leoni Monastir</option>
         </select>
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+        <!--  <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
           <span *ngIf="type.text.errors.required">Champs Obligateur</span>
-        </div>
+        </div>-->
       </div>
     </div>
 

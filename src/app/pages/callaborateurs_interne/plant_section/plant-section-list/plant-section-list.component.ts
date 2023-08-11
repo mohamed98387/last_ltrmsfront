@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren, QueryList } from "@angular/core";
 import { DecimalPipe } from "@angular/common";
 import { Observable } from "rxjs";
 // Importation pour la table
+
 import { Table } from "./plant-section-list.model";
 import { tableData } from "./data-plant-section-list";
 import { AdvancedService } from "./plant-section-list.service";
@@ -12,6 +13,7 @@ import {
 // Importation pour les modals
 import Swal from "sweetalert2";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { PlantSectionService } from "src/app/services/plant-section.service";
 
 @Component({
   selector: "app-plant-section-list",
@@ -29,17 +31,23 @@ export class PlantSectionListComponent implements OnInit {
   hideme: boolean[] = [];
   tables$: Observable<Table[]>;
   total$: Observable<number>;
-
-  @ViewChildren(PlantSectionListDirective)
-  headers: QueryList<PlantSectionListDirective>;
+  newTable: any[] = [];
+  @ViewChildren(PlantSectionListDirective)headers: QueryList<PlantSectionListDirective>;
   public isCollapsed = true;
-
-  constructor(public service: AdvancedService, private modalService: NgbModal) {
+  selectedplantSection: Table;
+  constructor(public service: AdvancedService, private modalService: NgbModal, private plantSectionService: PlantSectionService) {
     this.tables$ = service.tables$;
     this.total$ = service.total$;
   }
 
   ngOnInit(): void {
+    this.plantSectionService.getPlantSetions().subscribe((res) => {
+      tableData.splice(0, tableData.length); // Clear the array
+      tableData.push(...res); // Push the new items into the array
+      console.log(tableData);
+      //   this.newTable = res;
+      this._fetchData();
+    });
     this.breadCrumbItems = [
       { label: "Collaborateurs Internes" },
       { label: "Plant section", active: true },
@@ -53,10 +61,7 @@ export class PlantSectionListComponent implements OnInit {
    * fetches the table value
    */
   _fetchData() {
-    this.tableData = tableData;
-    for (let i = 0; i <= this.tableData.length; i++) {
-      this.hideme.push(true);
-    }
+    this.hideme = new Array(this.newTable.length).fill(true);
   }
   /**
    * Sort table data
@@ -77,7 +82,7 @@ export class PlantSectionListComponent implements OnInit {
   /**
    * Delete Modal method
    */
-  confirm() {
+  confirm(i) {
     Swal.fire({
       title: "Etes-vous sûre?",
       text: "Vous ne pourrez pas revenir en arrière!",
@@ -88,7 +93,14 @@ export class PlantSectionListComponent implements OnInit {
       confirmButtonText: "Oui, Supprimez-le!",
       cancelButtonText: "Annuler",
     }).then((result) => {
+
       if (result.value) {
+        this.plantSectionService.removePlantSetions(i).subscribe(
+          (res:any)=>{
+            console.log("plant section removed")
+          }
+
+        )
         Swal.fire("Supprimé!", "Votre utilisateur a été supprimé", "success");
       }
     });
@@ -99,5 +111,10 @@ export class PlantSectionListComponent implements OnInit {
    */
   openModal(content: any) {
     this.modalService.open(content, { windowClass: "modal-holder" });
+  }
+  onEdit(plantSection: Table) {
+    console.log(plantSection);
+    this.selectedplantSection = plantSection;
+    console.log(this.selectedplantSection);
   }
 }

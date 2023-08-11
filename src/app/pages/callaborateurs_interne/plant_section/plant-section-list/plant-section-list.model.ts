@@ -1,10 +1,10 @@
 export interface Table {
-  nom: string;
-  Description: string;
-  Emplacement: string;
-  PS_manager: string;
-  responsable_RH: string;
-  Organisation: string;
+  nomPs: string;
+  descriptionPS: string;
+  emplacementPS: string;
+  psManager: string;
+  responsableRH: string;
+  organisation: string;
 }
 
 // Search Data

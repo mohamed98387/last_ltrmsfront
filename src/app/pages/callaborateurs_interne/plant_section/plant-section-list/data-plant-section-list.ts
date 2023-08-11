@@ -1,11 +1,11 @@
 const tableData = [
   {
-    nom: "sss",
-    Description: "sss",
-    Emplacement: "sss",
-    PS_manager: "sss",
-    responsable_RH: "sss",
-    Organisation: "sss",
+    nomPs: "sss",
+    descriptionPS: "sss",
+    emplacementPS: "sss",
+    psManager: "sss",
+    responsableRH: "sss",
+    organisation: "sss",
   },
 ];
 

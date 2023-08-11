@@ -35,7 +35,7 @@ selectedPermission: Table;
   // bread crum data
   breadCrumbItems: Array<{}>;
   // Table data
-  tableData: Table[];
+ // tableData: Table[];
   public selected: any;
   hideme: boolean[] = [];
   tables$: Observable<Table[]>;

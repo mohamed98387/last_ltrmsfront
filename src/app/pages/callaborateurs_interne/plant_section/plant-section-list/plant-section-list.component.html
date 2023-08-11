@@ -115,37 +115,37 @@
                 <tr>
                   <td>
                     <ngb-highlight
-                      [result]="table.nom"
+                      [result]="table.nomPs"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Description"
+                      [result]="table.descriptionPS"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Emplacement"
+                      [result]="table.emplacementPS"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.PS_manager"
+                      [result]="table.psManager"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.responsable_RH"
+                      [result]="table.responsableRH"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Organisation"
+                      [result]="table.organisation"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
@@ -155,14 +155,14 @@
                       <button
                         type="button"
                         class="btn btn-outline-primary btn-rounded"
-                        (click)="openModal(contentEdit)"
+                        (click)="openModal(contentEdit); onEdit(table)"
                       >
                         <i class="mdi mdi-account-edit"></i>
                       </button>
                       <button
                         type="button"
                         class="btn btn-outline-danger btn-rounded"
-                        (click)="confirm()"
+                        (click)="confirm(table.id)"
                       >
                         <i class="mdi mdi-delete"></i>
                       </button>
@@ -235,6 +235,6 @@
     ></button>
   </div>
   <div class="modal-body">
-    <app-edit-plant-section></app-edit-plant-section>
+    <app-edit-plant-section [selectedplantSection]="selectedplantSection"></app-edit-plant-section>
   </div>
 </ng-template>

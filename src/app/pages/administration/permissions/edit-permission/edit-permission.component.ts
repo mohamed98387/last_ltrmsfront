@@ -52,7 +52,7 @@ export class EditPermissionComponent implements OnInit {
    this.permissionService.updatepermission(data).subscribe(
       (res) => {
         console.log(res);
-        alert("role updated");
+        alert("permission updated");
         this.modalService.dismissAll();
       },
       (error) => {
