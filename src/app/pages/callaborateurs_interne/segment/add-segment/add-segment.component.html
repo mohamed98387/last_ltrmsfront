@@ -7,12 +7,12 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
-          placeholder="Nom"
+          formControlName="nomSegment"
+          [ngClass]="{ 'is-invalid': typesubmit && type.nomSegment.errors }"
+          placeholder="nom Segment"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+        <div *ngIf="typesubmit && type.nomSegment.errors" class="invalid-feedback">
+          <span *ngIf="type.nomSegment.errors.required">Champs Obligateur </span>
         </div>
       </div>
 
@@ -21,12 +21,12 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
-          placeholder="Description"
+          formControlName="centerCoutSegment"
+          [ngClass]="{ 'is-invalid': typesubmit && type.centerCoutSegment.errors }"
+          placeholder="center Cout Segment"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.centerCoutSegment.errors" class="invalid-feedback">
+          <span *ngIf="type.centerCoutSegment.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
@@ -35,49 +35,49 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
-          placeholder="Emplacement du PS"
+          formControlName="nomSapRef"
+          [ngClass]="{ 'is-invalid': typesubmit && type.nomSapRef.errors }"
+          placeholder="nom Sap Ref"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.nomSapRef.errors" class="invalid-feedback">
+          <span *ngIf="type.nomSapRef.errors.required">Champs Obligateur</span>
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Selectionner PS</label>
 
-        <select class="form-select">
+        <select formControlName="ps" class="form-select">
           <option selected>Centraux</option>
           <option>MH1</option>
           <option>MH2</option>
         </select>
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+  <!--    <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
           <span *ngIf="type.text.errors.required">Champs Obligateur</span>
-        </div>
+        </div>-->  
       </div>
       <div class="mb-3">
         <label class="form-label">Selectionner RH Segment</label>
 
-        <select class="form-select">
+        <select formControlName="rhSegment" class="form-select">
           <option selected>Mouez bougerra</option>
           <option>yahia ben salem</option>
           <option>lobna smari</option>
         </select>
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+    <!--     <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
           <span *ngIf="type.text.errors.required">Champs Obligateur</span>
-        </div>
+        </div>-->  
       </div>
 
       <div class="mb-3">
         <label class="form-label"> Selectionner Chef Segment</label>
-        <select class="form-select">
+        <select formControlName="chefSegment" class="form-select">
           <option selected>rami ben fraj</option>
           <option>imad habboul</option>
           <option>mohamed frigui</option>
         </select>
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
+        <!--  <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
           <span *ngIf="type.text.errors.required">Champs Obligateur</span>
-        </div>
+        </div>--> 
       </div>
     </div>
 

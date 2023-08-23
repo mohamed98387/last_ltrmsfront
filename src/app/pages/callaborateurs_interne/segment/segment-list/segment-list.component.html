@@ -115,37 +115,37 @@
                 <tr>
                   <td>
                     <ngb-highlight
-                      [result]="table.nom"
+                      [result]="table.nomSegment"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.center_cout"
+                      [result]="table.centerCoutSegment"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.nom_SAPRef"
+                      [result]="table.nomSapRef"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.PS"
+                      [result]="table.ps"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.RH_Segment"
+                      [result]="table.rhSegment"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Chef_Segment"
+                      [result]="table.chefSegment"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
@@ -155,14 +155,14 @@
                       <button
                         type="button"
                         class="btn btn-outline-primary btn-rounded"
-                        (click)="openModal(contentEdit)"
+                        (click)="openModal(contentEdit); onEdit(table)"
                       >
                         <i class="mdi mdi-account-edit"></i>
                       </button>
                       <button
                         type="button"
                         class="btn btn-outline-danger btn-rounded"
-                        (click)="confirm()"
+                        (click)="confirm(table.id)"
                       >
                         <i class="mdi mdi-delete"></i>
                       </button>
@@ -235,6 +235,6 @@
     ></button>
   </div>
   <div class="modal-body">
-    <app-edit-segment></app-edit-segment>
+    <app-edit-segment [selectedSegment]="selectedSegment"></app-edit-segment>
   </div>
 </ng-template>

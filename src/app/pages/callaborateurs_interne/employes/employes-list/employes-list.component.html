@@ -104,6 +104,8 @@
                     Prénom
                   </th>
                   <th sortable="adresse" (sort)="onSort($event)">Nom</th>
+                  <th sortable="adresse" (sort)="onSort($event)">Ps</th>
+                  <th sortable="adresse" (sort)="onSort($event)">Segment</th>
 
                   <th>Actions</th>
                 </tr>
@@ -112,19 +114,31 @@
                 <tr>
                   <td>
                     <ngb-highlight
-                      [result]="table.Matricule"
+                      [result]="table.matricule"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Prenom"
+                      [result]="table.prenom"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Nom"
+                      [result]="table.nom"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.ps.nomPs"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="table.segment.nomSegment"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>

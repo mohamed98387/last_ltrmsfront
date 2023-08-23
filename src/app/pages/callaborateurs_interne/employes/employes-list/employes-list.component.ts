@@ -34,6 +34,7 @@ export class EmployesListComponent implements OnInit {
   hideme: boolean[] = [];
   tables$: Observable<Table[]>;
   total$: Observable<number>;
+  newTable: any[] = [];
   data = [
     { Matricule: "10102521", Collaborateur: "Hanen Dridi", NOM: "Hanen" , PRENOM: "Dridi", COST_CENTER: 4594, SUBAREA: "LTN1", REGION: "Sbikha/3002/4023", SEGMENT: "Segment 72-1", Contremaitre: "Ommezzine Ahmed", GROUPE: "G-073-15", NATURE: "Direct"},
     { Matricule: "10102858", Collaborateur: "Khchini Seifeddine", NOM: "Khchini", PRENOM: "Seifeddine", COST_CENTER: 4580 , SUBAREA: "LTN1", REGION: "Sbikha/3002/4023", SEGMENT: "Cutting & WPA AUDI", Contremaitre: "Brahmi Abdelwaheb", GROUPE: "G-073-15", NATURE: "Direct"},
@@ -50,6 +51,13 @@ export class EmployesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.employeeService.getEmployees().subscribe((res) => {
+      tableData.splice(0, tableData.length); // Clear the array
+      tableData.push(...res); // Push the new items into the array
+      console.log(tableData);
+      //   this.newTable = res;
+      this._fetchData();
+    });
     this.breadCrumbItems = [
       { label: "Collaborateurs Internes" },
       { label: "Employes", active: true },
@@ -63,10 +71,7 @@ export class EmployesListComponent implements OnInit {
    * fetches the table value
    */
   _fetchData() {
-    this.tableData = tableData;
-    for (let i = 0; i <= this.tableData.length; i++) {
-      this.hideme.push(true);
-    }
+    this.hideme = new Array(this.newTable.length).fill(true);
   }
   /**
    * Sort table data
@@ -162,10 +167,12 @@ export class EmployesListComponent implements OnInit {
   importEmployees(){
     if (this.selectedFile) {
       this.employeeService.importEmployees(this.selectedFile).subscribe(
-        () => {
+        (res:any) => {
+          console.log(res)
           console.log('Employees imported successfully.');
         },
         (error) => {
+        
           console.error('Error importing employees:', error);
         }
       );

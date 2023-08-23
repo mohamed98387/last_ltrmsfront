@@ -97,20 +97,20 @@
                   <th sortable="nom" (sort)="onSort($event)">Nom</th>
                   <th sortable="adresse" (sort)="onSort($event)">Adresse</th>
                   <th sortable="nom_entreprise" (sort)="onSort($event)">
-                    Nom_Entreprise
+                    Nom de l'entreprise
                   </th>
                   <th sortable="Email" (sort)="onSort($event)">Email</th>
                   <th sortable="Numéro_téléphone" (sort)="onSort($event)">
-                    Numéro_téléphone
+                    Numéro de téléphone
                   </th>
                   <th sortable="Matricule_fiscal" (sort)="onSort($event)">
-                    Matricule_fiscal
+                    Matricule fiscal
                   </th>
                   <th sortable="Horaire_travail" (sort)="onSort($event)">
-                    Horaire_travail
+                    Horaire travail
                   </th>
                   <th sortable="Site_Internet" (sort)="onSort($event)">
-                    Site_Internet
+                    Site Internet
                   </th>
                   <th>Actions</th>
                 </tr>
@@ -131,37 +131,37 @@
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.nom_entreprise"
+                      [result]="table.nomEntreprise"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Email"
+                      [result]="table.email"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Numero_telephone"
+                      [result]="table.numeroTelephone"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Matricule_fiscal"
+                      [result]="table.matriculeFiscal"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Horaire_travail"
+                      [result]="table.horaireTravail"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Site_Internet"
+                      [result]="table.siteInternet"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
@@ -170,14 +170,14 @@
                       <button
                         type="button"
                         class="btn btn-outline-primary btn-rounded"
-                        (click)="openModal(contentEdit)"
+                        (click)="openModal(contentEdit); onEdit(table)"
                       >
                         <i class="mdi mdi-account-edit"></i>
                       </button>
                       <button
                         type="button"
                         class="btn btn-outline-danger btn-rounded"
-                        (click)="confirm()"
+                        (click)="confirm(table.id)"
                       >
                         <i class="mdi mdi-delete"></i>
                       </button>
@@ -250,6 +250,6 @@
     ></button>
   </div>
   <div class="modal-body">
-    <app-edit-agence></app-edit-agence>
+    <app-edit-agence [selectedagence]="selectedagence"></app-edit-agence>
   </div>
 </ng-template>

@@ -2,74 +2,74 @@
 <div>
     <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
       <div class="row">
-  
+        {{typeValidationForm.value |json }}
         <div class="col-md-6">
           <div class="mb-3">
             <label class="form-label">Nom</label>
-            <input type="text" class="form-control" formControlName="text"
-                   [ngClass]="{'is-invalid': typesubmit && type.text.errors}" placeholder="Nom"/>
-            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-              <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+            <input type="text" class="form-control" formControlName="nom"
+                   [ngClass]="{'is-invalid': typesubmit && type.nom.errors}" placeholder="Nom"/>
+            <div *ngIf="typesubmit && type.nom.errors" class="invalid-feedback">
+              <span *ngIf="type.nom.errors.required">Champs Obligateur </span>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="mb-3">
             <label class="form-label">Adresse</label>
-            <input type="text" class="form-control" formControlName="text"
-                   [ngClass]="{'is-invalid': typesubmit && type.text.errors}" placeholder="Adresse"/>
-            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-              <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+            <input type="text" class="form-control" formControlName="adresse"
+                   [ngClass]="{'is-invalid': typesubmit && type.adresse.errors}" placeholder="Adresse"/>
+            <div *ngIf="typesubmit && type.adresse.errors" class="invalid-feedback">
+              <span *ngIf="type.adresse.errors.required">Champs Obligateur</span>
             </div>
           </div>
         </div>
         <div class="col-md-6">
             <div class="mb-3">
               <label class="form-label">Nom Entreprise</label>
-              <input type="text" class="form-control" formControlName="text"
-                     [ngClass]="{'is-invalid': typesubmit && type.text.errors}" placeholder="Nom_Entreprise"/>
-              <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-                <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+              <input type="text" class="form-control" formControlName="nomEntreprise"
+                     [ngClass]="{'is-invalid': typesubmit && type.nomEntreprise.errors}" placeholder="Nom_Entreprise"/>
+              <div *ngIf="typesubmit && type.nomEntreprise.errors" class="invalid-feedback">
+                <span *ngIf="type.nomEntreprise.errors.required">Champs Obligateur</span>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
               <label class="form-label">Numero telephone</label>
-              <input type="text" class="form-control" formControlName="text"
-                     [ngClass]="{'is-invalid': typesubmit && type.text.errors}" placeholder="Numero_telephone"/>
-              <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-                <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+              <input type="number" class="form-control" formControlName="numeroTelephone"
+                     [ngClass]="{'is-invalid': typesubmit && type.numeroTelephone.errors}" placeholder="Numero_telephone"/>
+              <div *ngIf="typesubmit && type.numeroTelephone.errors" class="invalid-feedback">
+                <span *ngIf="type.numeroTelephone.errors.required">Champs Obligateur</span>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
               <label class="form-label">Matricule fiscal </label>
-              <input type="text" class="form-control" formControlName="text"
-                     [ngClass]="{'is-invalid': typesubmit && type.text.errors}" placeholder="Matricule_fiscal"/>
-              <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-                <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+              <input type="text" class="form-control" formControlName="matriculeFiscal"
+                     [ngClass]="{'is-invalid': typesubmit && type.matriculeFiscal.errors}" placeholder="Matricule_fiscal"/>
+              <div *ngIf="typesubmit && type.matriculeFiscal.errors" class="invalid-feedback">
+                <span *ngIf="type.matriculeFiscal.errors.required">Champs Obligateur</span>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
               <label class="form-label"> Horaire travail</label>
-              <input type="text" class="form-control" formControlName="text"
-                     [ngClass]="{'is-invalid': typesubmit && type.text.errors}" placeholder="Horaire_travail"/>
-              <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-                <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+              <input type="text" class="form-control" formControlName="horaireTravail"
+                     [ngClass]="{'is-invalid': typesubmit && type.horaireTravail.errors}" placeholder="Horaire_travail"/>
+              <div *ngIf="typesubmit && type.horaireTravail.errors" class="invalid-feedback">
+                <span *ngIf="type.horaireTravail.errors.required">Champs Obligateur</span>
               </div>
             </div>
           </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Email</label>
-        <input type="text" class="form-control" formControlName="text"
-               [ngClass]="{'is-invalid': typesubmit && type.text.errors}" placeholder="Email"/>
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <input type="text" class="form-control" formControlName="email"
+               [ngClass]="{'is-invalid': typesubmit && type.email.errors}" placeholder="Email"/>
+        <div *ngIf="typesubmit && type.email.errors" class="invalid-feedback">
+          <span *ngIf="type.email.errors.required">Champs Obligateur</span>
         </div>
       </div>
     
@@ -78,10 +78,10 @@
     
           <div class="mb-3">
             <label class="form-label">Site Internet</label>
-            <input type="text" class="form-control" formControlName="text"
-                   [ngClass]="{'is-invalid': typesubmit && type.text.errors}" placeholder="Site_Internet"/>
-            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-              <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+            <input type="text" class="form-control" formControlName="siteInternet"
+                   [ngClass]="{'is-invalid': typesubmit && type.siteInternet.errors}" placeholder="Site_Internet"/>
+            <div *ngIf="typesubmit && type.siteInternet.errors" class="invalid-feedback">
+              <span *ngIf="type.siteInternet.errors.required">Champs Obligateur</span>
             </div>
           </div>
 

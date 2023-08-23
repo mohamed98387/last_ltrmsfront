@@ -10,6 +10,7 @@ import { AgenceListDirective, SortEvent } from "./agence-list.directive";
 // Importation pour les modals
 import Swal from "sweetalert2";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { AgenceService } from "src/app/services/agence.service";
 
 @Component({
   selector: "app-agence-list",
@@ -27,16 +28,23 @@ export class AgenceListComponent implements OnInit {
   hideme: boolean[] = [];
   tables$: Observable<Table[]>;
   total$: Observable<number>;
-
+  newTable: any[] = [];
   @ViewChildren(AgenceListDirective) headers: QueryList<AgenceListDirective>;
   public isCollapsed = true;
-
-  constructor(public service: AdvancedService, private modalService: NgbModal) {
+  selectedagence: Table;
+  constructor(public service: AdvancedService, private modalService: NgbModal,private agenceService:AgenceService) {
     this.tables$ = service.tables$;
     this.total$ = service.total$;
   }
 
   ngOnInit(): void {
+    this.agenceService.getAgences().subscribe((res) => {
+      tableData.splice(0, tableData.length); // Clear the array
+      tableData.push(...res); // Push the new items into the array
+      console.log(tableData);
+      //   this.newTable = res;
+      this._fetchData();
+    });
     this.breadCrumbItems = [
       { label: "Collaborateurs Externes" },
       { label: "Agences", active: true },
@@ -50,10 +58,7 @@ export class AgenceListComponent implements OnInit {
    * fetches the table value
    */
   _fetchData() {
-    this.tableData = tableData;
-    for (let i = 0; i <= this.tableData.length; i++) {
-      this.hideme.push(true);
-    }
+    this.hideme = new Array(this.newTable.length).fill(true);
   }
   /**
    * Sort table data
@@ -74,7 +79,7 @@ export class AgenceListComponent implements OnInit {
   /**
    * Delete Modal method
    */
-  confirm() {
+  confirm(i) {
     Swal.fire({
       title: "Etes-vous sûre?",
       text: "Vous ne pourrez pas revenir en arrière!",
@@ -86,6 +91,13 @@ export class AgenceListComponent implements OnInit {
       cancelButtonText: "Annuler",
     }).then((result) => {
       if (result.value) {
+        console.log(i)
+        this.agenceService.removeAgence(i).subscribe(
+          (res:any)=>{
+            console.log("Agence removed")
+          }
+
+        )
         Swal.fire("Supprimé!", "Votre utilisateur a été supprimé", "success");
       }
     });
@@ -96,5 +108,10 @@ export class AgenceListComponent implements OnInit {
    */
   openModal(content: any) {
     this.modalService.open(content, { windowClass: "modal-holder" });
+  }
+  onEdit(agence: Table) {
+    console.log(agence);
+    this.selectedagence = agence;
+    console.log(this.selectedagence);
   }
 }

@@ -1,10 +1,10 @@
 export interface Table {
-  nom: string;
-  center_cout: string;
-  nom_SAPRef: string;
-  PS: string;
-  RH_Segment: string;
-  Chef_Segment: string;
+  nomSegment: string;
+  centerCoutSegment: string;
+  nomSapRef: string;
+  ps: string;
+  rhSegment: string;
+  chefSegment: string;
 }
 
 // Search Data

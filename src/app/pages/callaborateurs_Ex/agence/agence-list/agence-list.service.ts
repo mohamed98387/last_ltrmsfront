@@ -43,14 +43,14 @@ function sort(tables: Table[], column: string, direction: string): Table[] {
  */
 function matches(tables: Table, term: string, pipe: PipeTransform) {
   return (
-    tables.Email.toLowerCase().includes(term.toLowerCase()) ||
-    tables.Horaire_travail.toLowerCase().includes(term) ||
-    tables.Matricule_fiscal.toLowerCase().includes(term) ||
-    tables.Numero_telephone.toLowerCase().includes(term) ||
-    tables.Site_Internet.toLowerCase().includes(term) ||
+    tables.email.toLowerCase().includes(term.toLowerCase()) ||
+    tables.horaireTravail.toLowerCase().includes(term) ||
+    tables.matriculeFiscal.toLowerCase().includes(term) ||
+    tables.numeroTelephone.toString().toLowerCase().includes(term) ||
+    tables.siteInternet.toLowerCase().includes(term) ||
     tables.adresse.toLowerCase().includes(term) ||
     tables.nom.toLowerCase().includes(term) ||
-    tables.nom_entreprise.toLowerCase().includes(term)
+    tables.nomEntreprise.toLowerCase().includes(term)
   );
 }
 

@@ -43,9 +43,9 @@ function sort(tables: Table[], column: string, direction: string): Table[] {
  */
 function matches(tables: Table, term: string, pipe: PipeTransform) {
   return (
-    tables.Matricule.toLowerCase().includes(term.toLowerCase()) ||
-    tables.Prenom.toLowerCase().includes(term) ||
-    tables.Nom.toLowerCase().includes(term)
+    tables.matricule.toString().toLowerCase().includes(term.toLowerCase()) ||
+    tables.nom.toLowerCase().includes(term) ||
+    tables.prenom.toLowerCase().includes(term)
   );
 }
 

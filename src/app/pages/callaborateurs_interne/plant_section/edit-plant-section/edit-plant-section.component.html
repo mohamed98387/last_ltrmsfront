@@ -9,7 +9,7 @@
           class="form-control"
           formControlName="nomPs"
           [ngClass]="{ 'is-invalid': typesubmit && type.nomPs.errors }"
-          placeholder="Nom"
+          placeholder="nom Ps"
         />
         <div *ngIf="typesubmit && type.nomPs.errors" class="invalid-feedback">
           <span *ngIf="type.nomPs.errors.required">Champs Obligateur </span>
@@ -23,7 +23,7 @@
           class="form-control"
           formControlName="descriptionPS"
           [ngClass]="{ 'is-invalid': typesubmit && type.descriptionPS.errors }"
-          placeholder="Adresse"
+          placeholder="description PS"
         />
         <div *ngIf="typesubmit && type.descriptionPS.errors" class="invalid-feedback">
           <span *ngIf="type.descriptionPS.errors.required">Champs Obligateur</span>
