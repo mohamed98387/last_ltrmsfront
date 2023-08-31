@@ -9,6 +9,7 @@ import { ChauffeurListDirective, SortEvent } from "./chauffeur-list.directive";
 // Importation pour les modals
 import Swal from "sweetalert2";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ChauffeurService } from "src/app/services/chauffeur.service";
 
 @Component({
   selector: "app-chauffeur-list",
@@ -26,17 +27,24 @@ export class ChauffeurListComponent implements OnInit {
   hideme: boolean[] = [];
   tables$: Observable<Table[]>;
   total$: Observable<number>;
-
+  selectedChauffeur:Table;
   @ViewChildren(ChauffeurListDirective)
   headers: QueryList<ChauffeurListDirective>;
   public isCollapsed = true;
 
-  constructor(public service: AdvancedService, private modalService: NgbModal) {
+  constructor(public service: AdvancedService, private modalService: NgbModal,private chauffeurService:ChauffeurService) {
     this.tables$ = service.tables$;
     this.total$ = service.total$;
   }
 
   ngOnInit(): void {
+    this.chauffeurService.getChauffeurs().subscribe((res) => {
+      tableData.splice(0, tableData.length); // Clear the array
+      tableData.push(...res); // Push the new items into the array
+      console.log(tableData);
+      //   this.newTable = res;
+      this._fetchData();
+    });
     this.breadCrumbItems = [
       { label: "Collaborateurs_externes" },
       { label: "Gestion Chauffeur", active: true },
@@ -74,7 +82,7 @@ export class ChauffeurListComponent implements OnInit {
   /**
    * Delete Modal method
    */
-  confirm() {
+  confirm(i) {
     Swal.fire({
       title: "Etes-vous sûre?",
       text: "Vous ne pourrez pas revenir en arrière!",
@@ -86,6 +94,13 @@ export class ChauffeurListComponent implements OnInit {
       cancelButtonText: "Annuler",
     }).then((result) => {
       if (result.value) {
+        console.log(i)
+        this.chauffeurService.removeChauffeurs(i).subscribe(
+          (res:any)=>{
+            console.log("chauffeur removed")
+          }
+
+        )
         Swal.fire("Supprimé!", "Votre utilisateur a été supprimé", "success");
       }
     });
@@ -96,5 +111,10 @@ export class ChauffeurListComponent implements OnInit {
    */
   openModal(content: any) {
     this.modalService.open(content, { windowClass: "modal-holder" });
+  }
+  onEdit(chauffeur: Table) {
+    console.log(chauffeur);
+    this.selectedChauffeur = chauffeur;
+    console.log(this.selectedChauffeur);
   }
 }

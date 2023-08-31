@@ -2,18 +2,19 @@
 <div>
     <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
       <div class="row">
+        {{typeValidationForm.value |json }}
         <div class="col-md-6">
           <div class="mb-3">
             <label class="form-label">Prénom</label>
             <input
               type="text"
               class="form-control"
-              formControlName="text"
-              [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+              formControlName="prenom"
+              [ngClass]="{ 'is-invalid': typesubmit && type.prenom.errors }"
               placeholder="Type de véhicule"
             />
-            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-              <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+            <div *ngIf="typesubmit && type.prenom.errors" class="invalid-feedback">
+              <span *ngIf="type.prenom.errors.required">Champs Obligateur </span>
             </div>
           </div>
         </div>
@@ -23,12 +24,12 @@
             <input
               type="text"
               class="form-control"
-              formControlName="text"
-              [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+              formControlName="nom"
+              [ngClass]="{ 'is-invalid': typesubmit && type.nom.errors }"
               placeholder="Numéro de série"
             />
-            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-              <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+            <div *ngIf="typesubmit && type.nom.errors" class="invalid-feedback">
+              <span *ngIf="type.nom.errors.required">Champs Obligateur</span>
             </div>
           </div>
         </div>
@@ -36,14 +37,14 @@
       <div class="mb-3">
         <label class="form-label">   Date de Naissance</label>
         <input
-          type="text"
+          type="date"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="dateNaissance"
+          [ngClass]="{ 'is-invalid': typesubmit && type.dateNaissance.errors }"
           placeholder="Date de mise en route"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.dateNaissance.errors" class="invalid-feedback">
+          <span *ngIf="type.dateNaissance.errors.required">Champs Obligateur</span>
         </div>
       </div>
       <div class="row">
@@ -51,28 +52,22 @@
           <div class="mb-3">
             <label class="form-label">     Téléphone</label>
             <input
-              type="text"
+              type="number"
               class="form-control"
-              formControlName="text"
-              [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+              formControlName="telephone"
+              [ngClass]="{ 'is-invalid': typesubmit && type.telephone.errors }"
               placeholder="Type de véhicule"
             />
-            <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-              <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+            <div *ngIf="typesubmit && type.telephone.errors" class="invalid-feedback">
+              <span *ngIf="type.telephone.errors.required">Champs Obligateur </span>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="mb-3">
             <label class="form-label">Choisir une agence</label>
-            <select class="form-select">
-              <option selected>STE VOYAGES TUNISIE S.V.T</option>
-              <option>STE TUNISIAN BEAUTY TRAVEL</option>
-              <option>SOCIETE YAHIA SERVICES</option>
-              <option>STE PRIMA TOURS SA</option>
-              <option>PROVINCE VOYAGES</option>
-              <option>Tunisian travel service ( TTS )</option>
-              <option>SOCIETE DE TRANSPORT DU SAHEL STS</option>
+            <select class="form-select" formControlName="selectedAgence">
+              <option *ngFor="let item of agenceTable" [ngValue]="item.id">{{ item.nom }}</option>
             </select>
           </div>
         </div>

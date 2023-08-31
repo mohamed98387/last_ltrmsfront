@@ -1,9 +1,9 @@
 const tableData = [
   {
-    Prenom: "BUS",
-    Nom: "6696 TU 94",
-    Date_Naissance: "May 10, 2000",
-    Telephone: "CONGLOF (MERCEDES )",
+    prenom: "BUS",
+    nom: "6696 TU 94",
+    dateNaissance: "May 10, 2000",
+    telephone: 515522,
     agence: ""
   },
 ];

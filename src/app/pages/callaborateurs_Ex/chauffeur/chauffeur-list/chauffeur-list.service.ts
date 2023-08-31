@@ -43,10 +43,10 @@ function sort(tables: Table[], column: string, direction: string): Table[] {
  */
 function matches(tables: Table, term: string, pipe: PipeTransform) {
   return (
-    tables.Nom.toLowerCase().includes(term.toLowerCase()) ||
-    tables.Prenom.toLowerCase().includes(term) ||
-    tables.Date_Naissance.toLowerCase().includes(term) ||
-    tables.Telephone.toLowerCase().includes(term) ||
+    tables.nom.toLowerCase().includes(term.toLowerCase()) ||
+    tables.prenom.toLowerCase().includes(term) ||
+    tables.dateNaissance.toLowerCase().includes(term) ||
+    tables.telephone.toString().toLowerCase().includes(term) ||
     tables.agence.toLowerCase().includes(term)
   );
 }

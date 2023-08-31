@@ -1,9 +1,9 @@
 // Table data
 export interface Table {
-  type_vehicule: string;
-  Num_serie: string;
-  Date_mise_route: string;
-  nom_reference: string;
+  typeVehicule: string;
+  numSerie: string;
+  date: string;
+  reference: string;
   capacite: string;
   agence: string;
 }

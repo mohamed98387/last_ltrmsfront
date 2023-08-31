@@ -115,25 +115,25 @@
                 <tr>
                   <td>
                     <ngb-highlight
-                      [result]="table.type_vehicule"
+                      [result]="table.typeVehicule"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Num_serie"
+                      [result]="table.numSerie"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Date_mise_route"
+                      [result]="table.date"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.nom_reference"
+                      [result]="table.reference"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
@@ -145,7 +145,7 @@
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.agence"
+                      [result]="table.agence.nom"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
@@ -154,14 +154,14 @@
                       <button
                         type="button"
                         class="btn btn-outline-primary btn-rounded"
-                        (click)="openModal(contentEdit)"
+                        (click)="openModal(contentEdit); onEdit(table)"
                       >
                         <i class="mdi mdi-account-edit"></i>
                       </button>
                       <button
                         type="button"
                         class="btn btn-outline-danger btn-rounded"
-                        (click)="confirm()"
+                        (click)="confirm(table.id)"
                       >
                         <i class="mdi mdi-delete"></i>
                       </button>
@@ -236,6 +236,6 @@
   </div>
   <div class="modal-body">
     <!-- Edit vehicule component -->
-    <app-edit-vehicule></app-edit-vehicule>
+    <app-edit-vehicule [selectedvehicule]="selectedvehicule"></app-edit-vehicule>
   </div>
 </ng-template>

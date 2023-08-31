@@ -115,31 +115,31 @@
                 <tr>
                   <td>
                     <ngb-highlight
-                      [result]="table.Prenom"
+                      [result]="table.prenom"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Nom"
+                      [result]="table.nom"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Date_Naissance"
+                      [result]="table.dateNaissance"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Telephone"
+                      [result]="table.telephone"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.agence"
+                      [result]="table.agence.nom"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
@@ -149,14 +149,14 @@
                       <button
                         type="button"
                         class="btn btn-outline-primary btn-rounded"
-                        (click)="openModal(contentEdit)"
+                        (click)="openModal(contentEdit); onEdit(table)"
                       >
                         <i class="mdi mdi-account-edit"></i>
                       </button>
                       <button
                         type="button"
                         class="btn btn-outline-danger btn-rounded"
-                        (click)="confirm()"
+                        (click)="confirm(table.id)"
                       >
                         <i class="mdi mdi-delete"></i>
                       </button>
@@ -231,6 +231,6 @@
   </div>
   <div class="modal-body">
     <!-- Edit vehicule component -->
-    <app-edit-chauffeur></app-edit-chauffeur>
+    <app-edit-chauffeur [selectedChauffeur]="selectedChauffeur"></app-edit-chauffeur>
   </div>
 </ng-template>

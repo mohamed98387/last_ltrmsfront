@@ -1,11 +1,11 @@
 const tableData = [
   {
-    type_vehicule: "BUS",
-    Num_serie: "6696 TU 94",
-    Date_mise_route: "May 10, 2000",
-    nom_reference: "CONGLOF (MERCEDES )",
+    typeVehicule: "BUS",
+    numSerie: "6696 TU 94",
+    date: "1998-01-01",
+    reference: "CONGLOF (MERCEDES )",
     capacite: "55",
-    agence: "",
+    agence: "STE VOYAGES TUNISIE S.V.T",
   },
 ];
 

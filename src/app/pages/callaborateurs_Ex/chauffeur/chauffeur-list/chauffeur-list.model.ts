@@ -1,9 +1,9 @@
 // Table data
 export interface Table {
-  Prenom: string;
-  Nom: string;
-  Date_Naissance: string;
-  Telephone: string;
+  prenom: string;
+  nom: string;
+  dateNaissance: string;
+  telephone: number;
   agence: string;
 }
 

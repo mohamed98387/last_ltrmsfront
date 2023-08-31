@@ -2,41 +2,39 @@ import { Component, Input, OnInit } from "@angular/core";
 
 // importation form
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { AgenceService } from "src/app/services/agence.service";
+import { ChauffeurService } from "src/app/services/chauffeur.service";
 @Component({
   selector: 'app-add-chauffeur',
   templateUrl: './add-chauffeur.component.html',
   styleUrls: ['./add-chauffeur.component.scss']
 })
 export class AddChauffeurComponent implements OnInit {
-
+  agenceTable: any[] = [];
   typeValidationForm: FormGroup; // type validation form
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(public formBuilder: FormBuilder,private agenceService:AgenceService,private chauffeurService:ChauffeurService
+    ,private modalService: NgbModal) {}
   typesubmit: boolean;
 
   ngOnInit(): void {
+    this.agenceService.getAgences().subscribe((res) => {
+      this.agenceTable.splice(0, this.agenceTable.length); // Clear the array
+      this.agenceTable.push(...res); // Push the new items into the array
+      console.log(this.agenceTable);
+      //   this.newTable = res;
+     
+    });
     /**
      * Type validation form
      */
     this.typeValidationForm = this.formBuilder.group(
       {
-        text: ["", [Validators.required]],
-        email: [
-          "",
-          [
-            Validators.required,
-            Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
-          ],
-        ],
-        url: ["", [Validators.required, Validators.pattern("https?://.+")]],
-        digits: ["", [Validators.required, Validators.pattern("[0-9]+")]],
-        number: ["", [Validators.required, Validators.pattern("[0-9]+")]],
-        alphanum: [
-          "",
-          [Validators.required, Validators.pattern("[a-zA-Z0-9]+")],
-        ],
-        textarea: ["", [Validators.required]],
-        password: ["", [Validators.required, Validators.minLength(6)]],
-        confirmpwd: ["", Validators.required],
+        prenom: ["", [Validators.required]],
+        nom: ["", [Validators.required]],
+        dateNaissance: ["", [Validators.required]],
+        telephone: ["", [Validators.required]],
+        selectedAgence: ["", [Validators.required]],
       },
       {}
     );
@@ -52,6 +50,26 @@ export class AddChauffeurComponent implements OnInit {
    */
   typeSubmit() {
     this.typesubmit = true;
+    const data={
+      prenom:this.typeValidationForm.controls.prenom.value,
+      nom:this.typeValidationForm.controls.nom.value,
+      dateNaissance:this.typeValidationForm.controls.dateNaissance.value,
+      telephone:this.typeValidationForm.controls.telephone.value,
+     agence:{"nom":this.typeValidationForm.controls.selectedAgence.value},
+     
+    }
+    if (this.typeValidationForm.invalid) {
+      return ;
+    } else {
+      console.log(data)
+  this.chauffeurService.addChauffeurs(data).subscribe(
+  (res:any)=>{
+   console.log(res)
+   this.modalService.dismissAll();
+  }
+  
+  )
+    }
   }
 
 }

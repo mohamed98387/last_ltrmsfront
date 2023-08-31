@@ -43,9 +43,10 @@ function sort(tables: Table[], column: string, direction: string): Table[] {
  */
 function matches(tables: Table, term: string, pipe: PipeTransform) {
   return (
-    tables.type_vehicule.toLowerCase().includes(term.toLowerCase()) ||
-    tables.Num_serie.toLowerCase().includes(term) ||
-    tables.Date_mise_route.toLowerCase().includes(term) ||
+    tables.typeVehicule.toLowerCase().includes(term.toLowerCase()) ||
+    tables.numSerie.toLowerCase().includes(term) ||
+    tables.date.toLowerCase().includes(term) ||
+    tables.reference.toLowerCase().includes(term) ||
     tables.capacite.toLowerCase().includes(term) ||
     tables.agence.toLowerCase().includes(term)
   );
