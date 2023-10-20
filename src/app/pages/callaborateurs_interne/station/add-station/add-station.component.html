@@ -7,12 +7,12 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="refRegion"
+          [ngClass]="{ 'is-invalid': typesubmit && type.refRegion.errors }"
           placeholder="Référence Région"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur </span>
+        <div *ngIf="typesubmit && type.refRegion.errors" class="invalid-feedback">
+          <span *ngIf="type.refRegion.errors.required">Champs Obligateur </span>
         </div>
       </div>
 
@@ -21,53 +21,53 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="refSap"
+          [ngClass]="{ 'is-invalid': typesubmit && type.refSap.errors }"
           placeholder="Réf. SAP LEONI(Station)"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.refSap.errors" class="invalid-feedback">
+          <span *ngIf="type.refSap.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Longitude</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="longitude"
+          [ngClass]="{ 'is-invalid': typesubmit && type.longitude.errors }"
           placeholder="Longitude"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.longitude.errors" class="invalid-feedback">
+          <span *ngIf="type.longitude.errors.required">Champs Obligateur</span>
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Latitude</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="latitude"
+          [ngClass]="{ 'is-invalid': typesubmit && type.latitude.errors }"
           placeholder="Latitude"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.latitude.errors" class="invalid-feedback">
+          <span *ngIf="type.latitude.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Rayon</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="rayon"
+          [ngClass]="{ 'is-invalid': typesubmit && type.rayon.errors }"
           placeholder="Rayon"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.rayon.errors" class="invalid-feedback">
+          <span *ngIf="type.rayon.errors.required">Champs Obligateur</span>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import { ChauffeurService } from "src/app/services/chauffeur.service";
   styleUrls: ['./add-chauffeur.component.scss']
 })
 export class AddChauffeurComponent implements OnInit {
+  defaultSelectedAgence: any;
   agenceTable: any[] = [];
   typeValidationForm: FormGroup; // type validation form
   constructor(public formBuilder: FormBuilder,private agenceService:AgenceService,private chauffeurService:ChauffeurService
@@ -23,7 +24,7 @@ export class AddChauffeurComponent implements OnInit {
       this.agenceTable.push(...res); // Push the new items into the array
       console.log(this.agenceTable);
       //   this.newTable = res;
-     
+      this.defaultSelectedAgence = this.agenceTable[0].nom ;
     });
     /**
      * Type validation form
@@ -34,7 +35,7 @@ export class AddChauffeurComponent implements OnInit {
         nom: ["", [Validators.required]],
         dateNaissance: ["", [Validators.required]],
         telephone: ["", [Validators.required]],
-        selectedAgence: ["", [Validators.required]],
+        selectedAgence: [ this.defaultSelectedAgence, [Validators.required]],
       },
       {}
     );
@@ -65,6 +66,7 @@ export class AddChauffeurComponent implements OnInit {
   this.chauffeurService.addChauffeurs(data).subscribe(
   (res:any)=>{
    console.log(res)
+   alert("Chauffeur added successfully")
    this.modalService.dismissAll();
   }
   

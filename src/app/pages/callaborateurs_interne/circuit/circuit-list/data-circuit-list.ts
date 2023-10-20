@@ -1,11 +1,11 @@
 const tableData = [
   {
-    Reference_chemin: "aaaa",
-    Reference_SAP: "aaaa",
-    Nb_km: "aaaa",
-    Contribution_employe: "aaaa",
-    Cout_Km: "aaaa",
-    Point_arrivee: "aaaa",
+    refChemin: "aaaa",
+    refSap: "aaaa",
+    nbKilometre: 500,
+    contributionEmploye: "aaaa",
+    coutKm: 600,
+    pointArrive: "aaaa",
     agence: "aaaa",
   },
 ];

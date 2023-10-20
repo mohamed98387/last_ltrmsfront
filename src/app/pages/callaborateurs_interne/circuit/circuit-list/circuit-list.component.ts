@@ -12,6 +12,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Component } from "@angular/core";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import { CircuitService } from "src/app/services/circuit.service";
 @Component({
   selector: "app-circuit-list",
   templateUrl: "./circuit-list.component.html",
@@ -37,13 +38,20 @@ export class CircuitListComponent implements OnInit {
   @ViewChildren(PlantSectionListDirective)
   headers: QueryList<PlantSectionListDirective>;
   public isCollapsed = true;
-
-  constructor(public service: AdvancedService, private modalService: NgbModal) {
+  selectedCircuit:Table;
+  constructor(public service: AdvancedService, private modalService: NgbModal,private circuitService:CircuitService) {
     this.tables$ = service.tables$;
     this.total$ = service.total$;
   }
 
   ngOnInit(): void {
+    this.circuitService.getCircuits().subscribe((res) => {
+      tableData.splice(0, tableData.length); // Clear the array
+      tableData.push(...res); // Push the new items into the array
+      console.log(tableData);
+      //   this.newTable = res;
+      this._fetchData();
+    });
     this.breadCrumbItems = [
       { label: "Collaborateurs Internes" },
       { label: "Circuits", active: true },
@@ -81,7 +89,7 @@ export class CircuitListComponent implements OnInit {
   /**
    * Delete Modal method
    */
-  confirm() {
+  confirm(i) {
     Swal.fire({
       title: "Etes-vous sûre?",
       text: "Vous ne pourrez pas revenir en arrière!",
@@ -93,6 +101,13 @@ export class CircuitListComponent implements OnInit {
       cancelButtonText: "Annuler",
     }).then((result) => {
       if (result.value) {
+        console.log(i)
+        this.circuitService.removeCircuit(i).subscribe(
+          (res:any)=>{
+            console.log("Circuis removed")
+          }
+
+        )
         Swal.fire("Supprimé!", "Votre utilisateur a été supprimé", "success");
       }
     });
@@ -152,5 +167,10 @@ export class CircuitListComponent implements OnInit {
   saveAsExcelFile(buffer: any, fileName: string) {
     const blob: Blob = new Blob([buffer], { type: "application/octet-stream" });
     saveAs(blob, fileName + "_" + new Date().getTime() + ".xlsx");
+  }
+  onEdit(circuit: Table) {
+    console.log(circuit);
+    this.selectedCircuit = circuit;
+    console.log(this.selectedCircuit);
   }
 }

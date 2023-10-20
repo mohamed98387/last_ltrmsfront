@@ -43,12 +43,12 @@ function sort(tables: Table[], column: string, direction: string): Table[] {
  */
 function matches(tables: Table, term: string, pipe: PipeTransform) {
   return (
-    tables.Reference_chemin.toLowerCase().includes(term.toLowerCase()) ||
-    tables.Reference_SAP.toLowerCase().includes(term) ||
-    tables.Nb_km.toLowerCase().includes(term) ||
-    tables.Contribution_employe.toLowerCase().includes(term.toLowerCase()) ||
-    tables.Cout_Km.toLowerCase().includes(term) ||
-    tables.Point_arrivee.toLowerCase().includes(term) ||
+    tables.refChemin.toLowerCase().includes(term.toLowerCase()) ||
+    tables.refSap.toLowerCase().includes(term) ||
+    tables.nbKilometre.toString().toLowerCase().includes(term) ||
+    tables.contributionEmploye.toLowerCase().includes(term.toLowerCase()) ||
+    tables.coutKm.toString().toLowerCase().includes(term) ||
+    tables.pointArrive.toLowerCase().includes(term) ||
     tables.agence.toLowerCase().includes(term)
   );
 }

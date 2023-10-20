@@ -1,10 +1,10 @@
 const tableData = [
   {
-    Reference_Region: "qqqq",
-    Ref_SAP: "qqqq",
-    Longitude: "qqqq",
-    Latitude: "qqqq",
-    Rayon: "qqqq",
+    refRegion: "qqqq",
+    refSap: "qqqq",
+    longitude: 100,
+    latitude: 200,
+    rayon:300,
   },
 ];
 

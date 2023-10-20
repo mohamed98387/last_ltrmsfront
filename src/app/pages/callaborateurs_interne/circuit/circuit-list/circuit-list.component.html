@@ -123,43 +123,43 @@
                 <tr>
                   <td>
                     <ngb-highlight
-                      [result]="table.Reference_chemin"
+                      [result]="table.refChemin"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Reference_SAP"
+                      [result]="table.refSap"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Nb_km"
+                      [result]="table.nbKilometre"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Contribution_employe"
+                      [result]="table.contributionEmploye"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Cout_Km"
+                      [result]="table.coutKm"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.Point_arrivee"
+                      [result]="table.pointArrive"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
                   <td>
                     <ngb-highlight
-                      [result]="table.agence"
+                      [result]="table.agence.nom"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
                   </td>
@@ -169,14 +169,14 @@
                       <button
                         type="button"
                         class="btn btn-outline-primary btn-rounded"
-                        (click)="openModal(contentEdit)"
+                        (click)="openModal(contentEdit); onEdit(table)"
                       >
                         <i class="mdi mdi-account-edit"></i>
                       </button>
                       <button
                         type="button"
                         class="btn btn-outline-danger btn-rounded"
-                        (click)="confirm()"
+                        (click)="confirm(table.id)"
                       >
                         <i class="mdi mdi-delete"></i>
                       </button>
@@ -249,6 +249,6 @@
     ></button>
   </div>
   <div class="modal-body">
-    <app-edit-circuit></app-edit-circuit>
+    <app-edit-circuit  [selectedCircuit]="selectedCircuit"></app-edit-circuit>
   </div>
 </ng-template>

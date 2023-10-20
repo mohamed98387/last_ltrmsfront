@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { StationService } from "src/app/services/station.service";
 
 @Component({
   selector: "app-add-station",
@@ -8,7 +10,7 @@ import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 })
 export class AddStationComponent implements OnInit {
   typeValidationForm: FormGroup; // type validation form
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(public formBuilder: FormBuilder,private stationService:StationService, private modalService: NgbModal) {}
   typesubmit: boolean;
 
   ngOnInit(): void {
@@ -17,24 +19,11 @@ export class AddStationComponent implements OnInit {
      */
     this.typeValidationForm = this.formBuilder.group(
       {
-        text: ["", [Validators.required]],
-        email: [
-          "",
-          [
-            Validators.required,
-            Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
-          ],
-        ],
-        url: ["", [Validators.required, Validators.pattern("https?://.+")]],
-        digits: ["", [Validators.required, Validators.pattern("[0-9]+")]],
-        number: ["", [Validators.required, Validators.pattern("[0-9]+")]],
-        alphanum: [
-          "",
-          [Validators.required, Validators.pattern("[a-zA-Z0-9]+")],
-        ],
-        textarea: ["", [Validators.required]],
-        password: ["", [Validators.required, Validators.minLength(6)]],
-        confirmpwd: ["", Validators.required],
+        refRegion: ["", [Validators.required]],
+        refSap: ["", [Validators.required]],
+        longitude: ["", [Validators.required]],
+        latitude: ["", [Validators.required]],
+        rayon: ["", [Validators.required]],
       },
       {}
     );
@@ -50,5 +39,27 @@ export class AddStationComponent implements OnInit {
    */
   typeSubmit() {
     this.typesubmit = true;
+    const data={
+      refRegion:this.typeValidationForm.controls.refRegion.value,
+      refSap:this.typeValidationForm.controls.refSap.value,
+      longitude:this.typeValidationForm.controls.longitude.value,
+      latitude:this.typeValidationForm.controls.latitude.value,
+      rayon:this.typeValidationForm.controls.rayon.value,
+ 
+     
+    }
+    if (this.typeValidationForm.invalid) {
+      return ;
+    } else {
+      console.log(data)
+  this.stationService.addStation(data).subscribe(
+  (res:any)=>{
+   console.log(res)
+   alert("station added")
+   this.modalService.dismissAll();
+  }
+  
+  )
+    }
   }
 }

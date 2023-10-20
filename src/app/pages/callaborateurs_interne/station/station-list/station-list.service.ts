@@ -43,11 +43,11 @@ function sort(tables: Table[], column: string, direction: string): Table[] {
  */
 function matches(tables: Table, term: string, pipe: PipeTransform) {
   return (
-    tables.Reference_Region.toLowerCase().includes(term.toLowerCase()) ||
-    tables.Ref_SAP.toLowerCase().includes(term) ||
-    tables.Longitude.toLowerCase().includes(term) ||
-    tables.Latitude.toLowerCase().includes(term) ||
-    tables.Rayon.toLowerCase().includes(term)
+    tables.refRegion.toLowerCase().includes(term.toLowerCase()) ||
+    tables.refSap.toLowerCase().includes(term) ||
+    tables.longitude.toString().toLowerCase().includes(term) ||
+    tables.latitude.toString().toLowerCase().includes(term) ||
+    tables.rayon.toString().toLowerCase().includes(term)
   );
 }
 

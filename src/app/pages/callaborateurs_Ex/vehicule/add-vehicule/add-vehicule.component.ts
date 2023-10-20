@@ -11,6 +11,7 @@ import { VehiculeService } from "src/app/services/vehicule.service";
   styleUrls: ["./add-vehicule.component.scss"],
 })
 export class AddVehiculeComponent implements OnInit {
+  defaultSelectedAgence: any;
   typeValidationForm: FormGroup; // type validation form
   agenceTable: any[] = [];
   constructor(public formBuilder: FormBuilder,private agenceService:AgenceService,private vehiculeService:VehiculeService
@@ -18,12 +19,13 @@ export class AddVehiculeComponent implements OnInit {
   typesubmit: boolean;
 
   ngOnInit(): void {
+    
     this.agenceService.getAgences().subscribe((res) => {
       this.agenceTable.splice(0, this.agenceTable.length); // Clear the array
       this.agenceTable.push(...res); // Push the new items into the array
       console.log(this.agenceTable);
       //   this.newTable = res;
-     
+      this.defaultSelectedAgence = this.agenceTable[0].nom ;
     });
     /**
      * Type validation form
@@ -35,9 +37,7 @@ export class AddVehiculeComponent implements OnInit {
         date: ["", [Validators.required]],
         reference: ["", [Validators.required]],
         capacite: ["", [Validators.required]],
-        selectedAgence: ["", [Validators.required]],
-      
-      
+        selectedAgence: [ this.defaultSelectedAgence , [Validators.required]],
       },
       {}
     );
@@ -70,6 +70,7 @@ export class AddVehiculeComponent implements OnInit {
   this.vehiculeService.addVehicules(data).subscribe(
   (res:any)=>{
    console.log(res)
+   alert("véhicule added successfully")
     this.modalService.dismissAll();
   }
   

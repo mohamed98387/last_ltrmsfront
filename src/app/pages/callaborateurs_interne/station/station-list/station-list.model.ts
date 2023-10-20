@@ -1,9 +1,9 @@
 export interface Table {
-  Reference_Region: string;
-  Ref_SAP: string;
-  Longitude: string;
-  Latitude: string;
-  Rayon: string;
+  refRegion: string;
+  refSap: string;
+  longitude: number;
+  latitude: number;
+  rayon: number;
 }
 
 // Search Data

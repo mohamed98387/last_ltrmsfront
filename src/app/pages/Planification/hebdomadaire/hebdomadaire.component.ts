@@ -17,7 +17,8 @@ export class HebdomadaireComponent implements OnInit {
       Mardi: "repos",
       Mercredi: "repos",
       Jeudi: "13:50 22:15",
-      "": "05:30 13:50",
+      vendredi: "05:30 13:50",
+      PlantSection: "PS1",
     },
   ];
   constructor() {}

@@ -84,11 +84,12 @@
           </div>
         </div>
       </div>
+      
       <div class="col-md-6">
         <div class="mb-3">
           <label class="form-label">Choisir une agence</label>
           <div>
-            <select class="form-select" formControlName="selectedAgence">
+            <select class="form-select" formControlName="selectedAgence" [ngModel]="defaultSelectedAgence">
               <option *ngFor="let item of agenceTable" [ngValue]="item.nom">{{ item.nom }}</option>
             </select>
           </div>

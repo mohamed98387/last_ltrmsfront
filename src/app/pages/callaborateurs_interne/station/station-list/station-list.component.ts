@@ -12,6 +12,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Component } from "@angular/core";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import { StationService } from "src/app/services/station.service";
 
 @Component({
   selector: "app-station-list",
@@ -20,6 +21,7 @@ import { saveAs } from "file-saver";
   providers: [AdvancedService, DecimalPipe],
 })
 export class StationListComponent implements OnInit {
+  selectedStation:Table;
   addModal: NgbModal;
   // bread crum data
   breadCrumbItems: Array<{}>;
@@ -39,12 +41,19 @@ export class StationListComponent implements OnInit {
   headers: QueryList<PlantSectionListDirective>;
   public isCollapsed = true;
 
-  constructor(public service: AdvancedService, private modalService: NgbModal) {
+  constructor(public service: AdvancedService, private modalService: NgbModal,private stationService:StationService) {
     this.tables$ = service.tables$;
     this.total$ = service.total$;
   }
 
   ngOnInit(): void {
+    this.stationService.getStations().subscribe((res) => {
+      tableData.splice(0, tableData.length); // Clear the array
+      tableData.push(...res); // Push the new items into the array
+      console.log(tableData);
+      //   this.newTable = res;
+      this._fetchData();
+    });
     this.breadCrumbItems = [
       { label: "Collaborateurs Internes" },
       { label: "Stations", active: true },
@@ -82,7 +91,7 @@ export class StationListComponent implements OnInit {
   /**
    * Delete Modal method
    */
-  confirm() {
+  confirm(i) {
     Swal.fire({
       title: "Etes-vous sûre?",
       text: "Vous ne pourrez pas revenir en arrière!",
@@ -94,6 +103,13 @@ export class StationListComponent implements OnInit {
       cancelButtonText: "Annuler",
     }).then((result) => {
       if (result.value) {
+        console.log(i)
+        this.stationService.removeStation(i).subscribe(
+          (res:any)=>{
+            console.log("station removed")
+          }
+
+        )
         Swal.fire("Supprimé!", "Votre utilisateur a été supprimé", "success");
       }
     });
@@ -153,5 +169,10 @@ export class StationListComponent implements OnInit {
   saveAsExcelFile(buffer: any, fileName: string) {
     const blob: Blob = new Blob([buffer], { type: "application/octet-stream" });
     saveAs(blob, fileName + "_" + new Date().getTime() + ".xlsx");
+  }
+  onEdit(station: Table) {
+    console.log(station);
+    this.selectedStation = station;
+    console.log(this.selectedStation);
   }
 }

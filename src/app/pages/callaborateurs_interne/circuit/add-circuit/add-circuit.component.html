@@ -2,17 +2,18 @@
 <div>
   <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
     <div class="row">
+      {{typeValidationForm.value |json }}
       <div class="mb-3">
         <label class="form-label">Référence du chemin</label>
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="refChemin"
+          [ngClass]="{ 'is-invalid': typesubmit && type.refChemin.errors }"
           placeholder="Référence du chemin"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.refChemin.errors" class="invalid-feedback">
+          <span *ngIf="type.refChemin.errors.required">Champs Obligateur</span>
         </div>
       </div>
       <div class="mb-3">
@@ -20,25 +21,25 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="refSap"
+          [ngClass]="{ 'is-invalid': typesubmit && type.refSap.errors }"
           placeholder="Reference SAP LEONI"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.refSap.errors" class="invalid-feedback">
+          <span *ngIf="type.refSap.errors.required">Champs Obligateur</span>
         </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Nombre de kilomètres</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="nbKilometre"
+          [ngClass]="{ 'is-invalid': typesubmit && type.nbKilometre.errors }"
           placeholder="Nombre de kilomètres"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.nbKilometre.errors" class="invalid-feedback">
+          <span *ngIf="type.nbKilometre.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
@@ -47,26 +48,26 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="contributionEmploye"
+          [ngClass]="{ 'is-invalid': typesubmit && type.contributionEmploye.errors }"
           placeholder="Contribution employé"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.contributionEmploye.errors" class="invalid-feedback">
+          <span *ngIf="type.contributionEmploye.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Coût par Km</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="coutKm"
+          [ngClass]="{ 'is-invalid': typesubmit && type.coutKm.errors }"
           placeholder="Coût par Km"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.coutKm.errors" class="invalid-feedback">
+          <span *ngIf="type.coutKm.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
@@ -75,25 +76,23 @@
         <input
           type="text"
           class="form-control"
-          formControlName="text"
-          [ngClass]="{ 'is-invalid': typesubmit && type.text.errors }"
+          formControlName="pointArrive"
+          [ngClass]="{ 'is-invalid': typesubmit && type.pointArrive.errors }"
           placeholder="Point d'arrivée"
         />
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.pointArrive.errors" class="invalid-feedback">
+          <span *ngIf="type.pointArrive.errors.required">Champs Obligateur</span>
         </div>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Selectionner une agence</label>
 
-        <select class="form-select">
-          <option selected>agence 1</option>
-          <option>agence 2</option>
-          <option>agence 3</option>
+        <select class="form-select" formControlName="selectedAgence" [ngModel]="defaultSelectedAgence">
+          <option *ngFor="let item of agenceTable" [ngValue]="item.nom">{{ item.nom }}</option>
         </select>
-        <div *ngIf="typesubmit && type.text.errors" class="invalid-feedback">
-          <span *ngIf="type.text.errors.required">Champs Obligateur</span>
+        <div *ngIf="typesubmit && type.selectedAgence.errors" class="invalid-feedback">
+          <span *ngIf="type.selectedAgence.errors.required">Champs Obligateur</span>
         </div>
       </div>
     </div>

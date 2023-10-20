@@ -39,7 +39,7 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 4,
-    label: "MENUITEMS.EXTERN.TEXT",
+    label: "Ressources Externes",
     icon: "mdi mdi-account-arrow-right",
 
     subItems: [
@@ -65,7 +65,7 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 5,
-    label: "MENUITEMS.INTERN.TEXT",
+    label: "Ressources Internes",
     icon: "mdi mdi-account-arrow-left",
 
     subItems: [
