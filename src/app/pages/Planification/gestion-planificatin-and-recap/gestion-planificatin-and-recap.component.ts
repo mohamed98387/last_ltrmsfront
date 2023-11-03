@@ -12,6 +12,7 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./gestion-planificatin-and-recap.component.scss']
 })
 export class GestionPlanificatinAndRecapComponent implements OnInit {
+  selectedFile: File | null;
   tableData = [
     { agence: "agence1", circuit: 'monastir', debut_Poste: 1350 ,fin_Poste: 1350,nombre_Employe:2,nombre_bus:2 ,jour_Semaine :"samedi"},
     { agence: "agence1", circuit: 'monastir', debut_Poste: 530 ,fin_Poste: 2250,nombre_Employe:2,nombre_bus:2 ,jour_Semaine :"samedi"},
@@ -20,6 +21,7 @@ export class GestionPlanificatinAndRecapComponent implements OnInit {
   TableFiltred= [
   
   ];
+  afficher:boolean=false;
   typeValidationForm: FormGroup; // type validation form
   agenceTable: any[] = [];
   defaultSelectedAgence: any;
@@ -28,7 +30,7 @@ export class GestionPlanificatinAndRecapComponent implements OnInit {
     ,private planificationTransportService:PlanificationTransportService,private modalServicetwo: NgbModal) { }
 
   ngOnInit(): void {
-   
+    this.afficher=false;
     this.planificationTransportService.lisFinalPlanificationTransports().subscribe((res) => {
       this.tableData.splice(0,  this.tableData.length); // Clear the array
       this.tableData.push(...res); // Push the new items into the array
@@ -102,4 +104,34 @@ test(){
   this.TableFiltred = this.tableData.filter(item => item.agence === this.typeValidationForm.controls.selectedAgenceMail.value);
   console.log(this.TableFiltred);
 }
+testTwo(){
+this.afficher=true;
+console.log(this.afficher)
+}
+onFileSelected(event: any) {
+  this.selectedFile = event.target.files[0];
+}
+envoyer(){
+  if (this.selectedFile) {
+    const formData = new FormData();
+    console.log(this.selectedFile)
+    console.log(this.typeValidationForm.controls.selectedAgenceMail.value)
+      formData.append('file', this.selectedFile);
+  this.planificationTransportService.sendPlanificationTransport(this.typeValidationForm.controls.selectedAgenceMail.value,formData).subscribe((res) => {
+
+   alert('Email envoyé avec succès');
+   window.location.reload();
+
+  }
+  ,
+        (error) => {
+          alert('Email envoyé avec succès');
+   window.location.reload();
+        });
+  }else{
+    console.log('Aucun fichier sélectionné');
+  }
+
+}
+
 }

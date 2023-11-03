@@ -219,7 +219,7 @@ There is no data to display.-->
         <option *ngFor="let item of agenceTable" [ngValue]="item.nom"  >{{ item.nom }}</option>
     
       </select>
-      <button (click)="test()" type="button" class="btn btn-primary buttontwoo">select</button>
+      <button (click)="test()" type="button" class="btn btn-primary buttontwooselect">select</button>
       </div>
       <br/>
       <table *ngIf="TableFiltred && TableFiltred.length > 0">
@@ -252,9 +252,21 @@ There is no data to display.-->
       </table>
       
       
-      <button  *ngIf="TableFiltred && TableFiltred.length > 0" (click)="exportToExceltwo()" type="button" class="btn btn-primary buttontwo">Export to Excel</button>
+      <button  *ngIf="TableFiltred && TableFiltred.length > 0" (click)="exportToExceltwo()" type="button" class="btn btn-primary buttontwoo">Export to Excel</button>
       
-      <button  *ngIf="TableFiltred && TableFiltred.length > 0"  type="button" class="btn btn-primary buttonthree" >envoyer vers agence</button>
+      <button  *ngIf="TableFiltred && TableFiltred.length > 0"  type="button" class="btn btn-primary buttonthreee" (click)="testTwo()" >envoyer vers agence</button>
+   
+
+      <div *ngIf="afficher==true">
+        <br/>
+        <h6>choissir la planification de transport en fichier excel</h6>
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" id="inputGroupFile02" (change)="onFileSelected($event)" >
+          <button class="input-group-text" for="inputGroupFile02" (click)="envoyer()" >envoyer</button>
+        </div>
+      </div>
+   
+
     </div>
   </div>
 </div>

@@ -8,6 +8,7 @@ import { Observable } from "rxjs";
 export class PlanificationTransportService {
 
   constructor(private http: HttpClient) { }
+
   addplanificationtransport(agenceName: any): Observable<any> {
     return this.http.get(`http://localhost:8080/addplanificationtransport/${agenceName}`);
   }
@@ -22,5 +23,10 @@ export class PlanificationTransportService {
   }
   deleteallFianlPlanificationTrasport(): Observable<any> {
     return this.http.delete("http://localhost:8080/clear-table-finalPlanfication");
+  }
+  sendPlanificationTransport(agenceName: any,formData:any): Observable<any> {
+
+   
+    return this.http.post(`http://localhost:8080/send-email-with-attachment/${agenceName}`,formData);
   }
 }
