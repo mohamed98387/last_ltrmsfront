@@ -60,3 +60,56 @@
   width: 550px;
   height: 40px;
 }
+table {
+  width: 10%; /* Use a percentage or specific width as needed */
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 4px; /* Reduce the padding to make the cells smaller */
+  text-align: left;
+  
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: #533aae;
+  color: white;
+}
+
+.buttontwo {
+  height: 55px;
+  width: 150px;
+ 
+}
+.buttontwoo {
+  height: 35px;
+  width: 150px;
+  margin-left: 10px;
+}
+.buttonthree{
+  height: 55px;
+  width: 150px;
+  margin-left: 10px;
+}
+
+
+
+.a{
+  display: flex;
+}
+
+
+.x{
+  font-size: 13px;
+}
+.item{width: 50px;}
+.custom-modal {
+  max-width: 90%; /* Adjust the maximum width as needed, e.g., 90% of the parent container */
+}
+.one{display: flex;}
+

@@ -1,5 +1,6 @@
 <div>
-<h3 class="title">Gestion des Planifications et Recap</h3>
+<h3 class="title">Gestion des Planifications Par Agence</h3>
+
 <br />
 <!--<div class="seqOne">
   <button type="button" class="btn btn-primary button" b>
@@ -48,14 +49,14 @@
   <br />
 
 
-  <button type="button" class="btn btn-primary button" b>
+  <button type="button" class="btn btn-primary button" b (click)="calcul()">
     calcul Données par agence
     </button>
     <br />
     <br />
 </div>
 <br />
-<button type="button" class="btn btn-primary button" b>
+<button type="button" class="btn btn-primary button" b (click)="generation()">
   Géneration de la planification transport 
 </button>
 <br />
@@ -170,4 +171,91 @@
 </div>
 <hr />
 There is no data to display.-->
+<h4 *ngIf="tableData && tableData.length > 0">Tableau de planification de transport de tous les Agences:</h4>
+<table *ngIf="tableData && tableData.length > 0">
+
+  <tr>
+    <th>Agence</th>
+    <th>Circuit</th>
+    <th>Jour_Semaine</th>
+    <th>Debut_Poste</th>
+    <th>Fin_Poste</th>
+    <th>Nombre_Employe</th>
+    <th>Nombre_bus</th>
+   
+  </tr>
+  <tr *ngFor="let item of tableData">
+    <td>{{ item.agence }}</td>
+    <td>{{ item.circuit }}</td>
+    <td>{{ item.jourSemaine }}</td>
+    <td>{{ item.debutPoste }}</td>
+    <td>{{ item.finPoste }}</td>
+    <td>{{ item.nombreEmploye }}</td>
+    <td>{{ item.nombresBus }}</td>
+ 
+ 
+  </tr>
+  <br />
+  <div class="a">
+
 </div>
+</table>
+<button (click)="exportToExcel()" type="button" class="btn btn-primary buttontwo">Export to Excel</button>
+
+<button  type="button" class="btn btn-primary buttonthree" (click)="openModal(contentImport)">envoyer vers agences</button>
+</div>
+<ng-template #contentImport role="document" let-modal class="custom-modal" >
+  <div class="modal-xl">
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Envoyer Planification vers agences</h5>
+
+  </div>
+  <div class="modal-body" >
+    <p class="p">Selctionner Agence</p>
+   
+    <div [formGroup]="typeValidationForm">
+      <div class="one">
+      <select class="form-select" formControlName="selectedAgenceMail" [ngModel]="defaultSelectedAgence" >
+        <option *ngFor="let item of agenceTable" [ngValue]="item.nom"  >{{ item.nom }}</option>
+    
+      </select>
+      <button (click)="test()" type="button" class="btn btn-primary buttontwoo">select</button>
+      </div>
+      <br/>
+      <table *ngIf="TableFiltred && TableFiltred.length > 0">
+
+        <tr>
+          <th>Agence</th>
+          <th>Circuit</th>
+          <th>Jour</th>
+          <th>Debut</th>
+          <th>Fin</th>
+          <th>Nb_Employe</th>
+          <th>Nb_bus</th>
+         
+        </tr>
+        <tr *ngFor="let item of TableFiltred">
+          <td>{{ item.agence }}</td>
+          <td>{{ item.circuit }}</td>
+          <td>{{ item.jourSemaine }}</td>
+          <td>{{ item.debutPoste }}</td>
+          <td>{{ item.finPoste }}</td>
+          <td>{{ item.nombreEmploye }}</td>
+          <td>{{ item.nombresBus }}</td>
+       
+       
+        </tr>
+        <br />
+        <div class="a">
+      
+      </div>
+      </table>
+      
+      
+      <button  *ngIf="TableFiltred && TableFiltred.length > 0" (click)="exportToExceltwo()" type="button" class="btn btn-primary buttontwo">Export to Excel</button>
+      
+      <button  *ngIf="TableFiltred && TableFiltred.length > 0"  type="button" class="btn btn-primary buttonthree" >envoyer vers agence</button>
+    </div>
+  </div>
+</div>
+</ng-template>
