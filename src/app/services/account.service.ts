@@ -26,4 +26,7 @@ export class AccountService {
       password,
     });
   }
+  updateuser(obj: any): Observable<any> {
+    return this.http.put("http://localhost:8080/update-user", obj);
+  }
 }

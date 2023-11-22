@@ -17,7 +17,7 @@ import { MENU } from "./menu";
 import { MenuItem } from "./menu.model";
 import { TranslateService } from "@ngx-translate/core";
 import { AccountService } from "src/app/services/account.service";
-
+import jwt_decode from "jwt-decode";
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
@@ -30,12 +30,14 @@ import { AccountService } from "src/app/services/account.service";
 export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild("componentRef") scrollRef;
   @Input() isCondensed = false;
-
+newTable :any[]=[];
   menu: any;
   data: any;
   isAdmin: boolean = null;
   menuItems = [];
-
+  profileinformation: any;
+  token: string | null;
+  role: string | null;
   @ViewChild("sideMenu") sideMenu: ElementRef;
 
   constructor(
@@ -50,10 +52,23 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
         this._activateMenuDropdown();
         this._scrollElement();
       }
+     
     });
   }
 
   ngOnInit() {
+   
+    this.accountService.getUser().subscribe((res) => {
+      console.log( res)
+      this.profileinformation=res;
+      console.log( this.profileinformation)
+      this.initialize();
+      document.body.setAttribute("data-sidebar", "dark");
+      console.log(this.menuItems);
+      this._scrollElement();
+    
+ 
+    });
     /*  this.accountService.getUser().subscribe(
       (res: any) => {
         //  console.log(object)
@@ -73,10 +88,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
         console.log(error);
       }
     );*/
-    this.initialize();
-    document.body.setAttribute("data-sidebar", "dark");
-    console.log(this.menuItems);
-    this._scrollElement();
+  
   }
   /**
    * Change the layout onclick
@@ -261,7 +273,39 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    * Initialize
    */
   initialize(): void {
-    this.menuItems = MENU;
+    this.token = localStorage.getItem("token");
+    if (this.token) {
+      // Decode the JWT token
+      const decodedToken: any = jwt_decode(this.token);
+
+      // Access the data in the token
+      this.role = decodedToken.roles;
+
+      // Print the extracted data
+  
+    }
+    console.log(this.token);
+    console.log();
+  
+ if(this.role[0]=== "ADMIN"){
+  this.newTable=MENU.slice(0,2)
+  console.log(this.newTable)
+  this.menuItems = this.newTable;
+
+ }
+ else if(this.role[0] === "RESPONSABLE_TRANSPORT"){
+  this.newTable=MENU.slice(3,6)
+  console.log(this.newTable)
+  this.menuItems = this.newTable;
+ }
+ else if(this.role[0] === "RH_SEGMENT"){
+  this.newTable=MENU.slice(5,6)
+  console.log(this.newTable)
+  this.menuItems = this.newTable;
+ }
+ 
+console.log(this.profileinformation)
+ 
   }
 
   /**

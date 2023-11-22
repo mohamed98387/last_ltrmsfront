@@ -25,6 +25,7 @@ import { AddRoleComponent } from "./roles/add-role/add-role.component";
 import { EditRoleComponent } from "./roles/edit-role/edit-role.component";
 import { AddPermissionComponent } from './permissions/add-permission/add-permission.component';
 import { EditPermissionComponent } from './permissions/edit-permission/edit-permission.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
@@ -42,7 +43,8 @@ import { EditPermissionComponent } from './permissions/edit-permission/edit-perm
     EditPermissionComponent,
     PermissionListComponent,
     AddPermissionComponent,
-    EditPermissionComponent
+    EditPermissionComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,45 @@
+<div><form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
+    <h1>Profile Information</h1>
+    <div class="row profile-image" >
+        <label for="fileInput" class="img-container">
+           
+              <img  src="assets/images/users/user-avatar.png" alt="Profile Image" class="img">
+            
+              <br/>
+          <h3>{{profileinformation.role}}</h3>
+          </label>
+    </div>
+<div class="row">
+    <div class="col-6">
+
+      <label for="exampleInputEmail1" class="form-label">email</label>
+      <input  placeholder="example@gmail.com" formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+  
+    
+</div>
+<div class="row">
+  <div class="col-3">
+    <label for="exampleInputEmail1" class="form-label">name</label>
+    <input  placeholder="name" formControlName="name" type="text" class="form-control" >
+  </div>
+
+  <div class="col-3">
+      <label for="exampleInputEmail1" class="form-label">phone</label>
+    <input    placeholder="phone" formControlName="phone" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <label for="exampleInputEmail1" class="form-label">city</label>
+    <input  placeholder="city"  formControlName="city" type="text" class="form-control" >
+  </div>
+
+  <div class="col-3">
+      <label for="exampleInputEmail1" class="form-label">organisation</label>
+    <input  placeholder="organisation"  formControlName="organisation" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+</div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>

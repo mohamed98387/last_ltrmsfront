@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit {
           console.log(AuthInterceptor.accesToken);
           localStorage.setItem("token", res.accesToken.toString());
           localStorage.setItem("refreshToken", res.refreshToken.toString());
-          this.router.navigate(["/user-list"]);
+          this.router.navigate(["/profile"]);
           this.params = new URLSearchParams();
         },
         (error) => {

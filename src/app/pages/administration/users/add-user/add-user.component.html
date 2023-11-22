@@ -1,6 +1,6 @@
 <!-- ADD USER -->
 <div>
-  {{ typeValidationForm.value | json }}
+ 
   <form (ngSubmit)="typeSubmit()" [formGroup]="typeValidationForm">
     <div class="row">
       <div class="col-md-6">
@@ -137,7 +137,7 @@
           <label class="form-label">Rôle</label>
           <select class="form-select" formControlName="role">
             <option selected value="ADMIN">ADMIN</option>
-            <option value="CHEF_SEGMENT">CHEF_SEGMENT</option>
+          
             <option value="RESPONSABLE_TRANSPORT">RESPONSABLE_TRANSPORT</option>
             <option value="RH_SEGMENT">RH_SEGMENT</option>
           </select>

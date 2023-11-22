@@ -114,18 +114,7 @@ export const MENU: MenuItem[] = [
         parentId: 6,
       },
 
-      {
-        id: 62,
-        label: "MENUITEMS.PLAN.LIST.EVENT",
-        link: "javascript:void(0);",
-        parentId: 6,
-      },
-      {
-        id: 63,
-        label: "MENUITEMS.PLAN.LIST.AUDIT",
-        link: "javascript:void(0);",
-        parentId: 6,
-      },
+ 
     ],
   },
   {

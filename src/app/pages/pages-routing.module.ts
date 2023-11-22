@@ -22,6 +22,7 @@ import { DetailPlanificationComponent } from "./Planification/detail-planificati
 import { NotificationAgenceComponent } from "./Planification/notification-agence/notification-agence.component";
 import { GestionPlanificatinAndRecapComponent } from "./Planification/gestion-planificatin-and-recap/gestion-planificatin-and-recap.component";
 import { RecapModifieComponent } from "./Planification/recap-modifie/recap-modifie.component";
+import { ProfileComponent } from "./administration/profile/profile.component";
 const routes: Routes = [
   // { path: '', redirectTo: 'users' },
   //
@@ -101,6 +102,7 @@ const routes: Routes = [
   { path: "station-list", component: StationListComponent },
   { path: "employes-list", component: EmployesListComponent },
   { path: "segment-list", component: SegmentListComponent },
+  { path: "profile", component: ProfileComponent },
 ];
 
 @NgModule({
