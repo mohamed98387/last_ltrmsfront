@@ -1,6 +1,7 @@
 <h3 class="title">Planification</h3>
 <div>
   <button
+  *ngIf="matchingRole && matchingRole.permissions && hasPermission(matchingRole.permissions, 'telecharger template')"
     type="button"
     class="btn btn-outline-primary button"
     (click)="exportToExcel(data, 'planning_import_template')"
@@ -10,6 +11,7 @@
 
   <br />
   <button
+  *ngIf="matchingRole && matchingRole.permissions && hasPermission(matchingRole.permissions, 'nouvelle planification')"
     type="button"
     class="btn btn-outline-primary button"
     routerLink="/NvPlanification"
@@ -22,10 +24,11 @@
 
 
 </div>
-<hr />
+
 <div>
   
-  <button
+  <button 
+  *ngIf="matchingRole && matchingRole.permissions && hasPermission(matchingRole.permissions, 'gestion de planification')"
     type="button"
     class="btn btn-outline-primary button"
     routerLink="/GestionPlanificationAndRecap"
@@ -34,6 +37,7 @@
   </button>
   <br />
   <button
+  *ngIf="matchingRole && matchingRole.permissions && hasPermission(matchingRole.permissions, 'recap semaine')"
   type="button"
   class="btn btn-outline-primary button"
   routerLink="/RecapModifiee"
